@@ -1,0 +1,268 @@
+:root {
+    --border-color: #d1d9e0;
+    --bg-primary: rgb(246 248 250);
+    --color-white: #fff;
+    --color-dark: #000;
+    --menu-title: rgb(31, 35, 40);
+    --primary-color: #3069ff;
+    --primary-muted-color: rgb(48 105 255 / 8%);
+    --transition: 0.2s;
+}
+
+body {
+    --body-bg: var(--bg-primary);
+    min-height: 100vh;
+}
+.main {
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    grid-gap: 20px;
+}
+/* Sidebar */
+.sidebar {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    background-color: var(--color-white);
+    border-right: 1px solid var(--border-color);
+    padding: 1rem;
+}
+.sidebar__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+.sidebar__header-logo {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.sidebar__header-version {
+    padding: 3px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.sidebar__navigations {
+    margin-top: 15px;
+}
+.sidebar__spoiler-btn {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 12px;
+    padding-inline: 15px;
+    height: 38px;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: #6d6d6d;
+    font-family: var(--font-title);
+    font-weight: 600;
+    transition: var(--transition);
+}
+.sidebar__spoiler-btn:hover {
+    color: var(--color-dark);
+}
+.sidebar__spoiler-btn::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    margin-left: auto;
+    -webkit-mask: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e")
+        no-repeat center / contain;
+    mask: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e")
+        no-repeat center / contain;
+    background-color: #a0a0a0;
+    transition: var(--transition);
+}
+.sidebar__spoiler-btn.open {
+    background-color: var(--primary-muted-color);
+    color: var(--primary-color);
+}
+.sidebar__spoiler-btn.open span {
+    color: var(--primary-color);
+}
+.sidebar__spoiler-btn.open::after {
+    background-color: var(--primary-color);
+    transform: rotate(180deg);
+}
+.sidebar__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 15px 0 0 20px;
+    position: relative;
+    margin-bottom: 15px;
+}
+.sidebar__menu::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 22px;
+    height: 100%;
+    width: 1px;
+    background-color: #dddddd;
+}
+.sidebar__menu-item {
+    position: relative;
+}
+.sidebar__menu-item::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    border-left: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    width: 16px;
+    height: 14px;
+    border-bottom-left-radius: 8px;
+}
+
+.sidebar__menu-item a {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    height: 28px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: var(--font-title);
+    color: #6d6d6d;
+    padding-inline: 25px 15px;
+    border-radius: 10px;
+    transition: var(--transition);
+}
+.sidebar__menu-item a:hover,
+.sidebar__menu-item a.active {
+    color: var(--primary-color);
+}
+
+/* Content */
+.content {
+    margin: 0 auto;
+    padding: 20px 15px;
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.content__header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+
+    padding: 0 10px 0;
+}
+.content__header-title {
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-title);
+    line-height: 1;
+    transition: var(--transition);
+    background-color: #818b981a;
+    padding: 7px 15px;
+    border-radius: 10px;
+}
+.content__header-title:hover {
+    color: var(--primary-color);
+    background-color: var(--primary-muted-color);
+}
+.content__header-subtitle {
+    font-size: 0.9rem;
+    line-height: 1;
+    color: var(--menu-title);
+}
+.content__header-subtitle::before {
+    content: "/";
+    margin-right: 5px;
+}
+.content__description {
+    padding-inline: 15px;
+}
+.content__description-title {
+    font-size: 2rem;
+    font-weight: 800;
+}
+.content__description-text {
+    color: var(--menu-title);
+    margin-top: 10px;
+}
+.content__description-route {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    margin-top: 20px;
+    color: #6c6c6c;
+    font-size: 0.9rem;
+}
+.card {
+    background-color: var(--color-white);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+}
+/* Navigations */
+.navigation {
+    padding: 1rem;
+}
+.navigation__title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.navigation__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+}
+.navigation__menu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #dfdfdf;
+}
+
+.navigation__menu-item a {
+    display: block;
+    padding: 5px 15px;
+    font-size: 0.9rem;
+    width: 100%;
+    position: relative;
+    transition: var(--transition);
+}
+.navigation__menu-item a:hover {
+    color: var(--primary-color);
+}
+.navigation__menu-item a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background-color: transparent;
+}
+.navigation__menu-item a.active {
+    color: var(--primary-color);
+}
+.navigation__menu-item a.active::before {
+    background-color: var(--primary-color);
+}
+
+pre code::before {
+    content: attr(class);
+    display: block;
+    font-size: 12px;
+    color: gray;
+    background: #f0f0f0;
+    padding: 2px 6px;
+}
