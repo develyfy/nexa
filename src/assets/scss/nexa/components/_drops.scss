@@ -1,0 +1,194 @@
+// -----------------------------------------
+// Drops
+// -----------------------------------------
+
+.dropdown,
+.dropup,
+.dropstart,
+.dropend {
+    position: relative;
+}
+// Dropdown
+.dropdown {
+    .drop-content {
+        position: absolute;
+        margin-top: 30px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        &.show {
+            margin-top: 10px;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+// Dropup
+.dropup {
+    .drop-content {
+        position: absolute;
+        margin-bottom: 30px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        &.show {
+            margin-bottom: 10px;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+// Dropstart
+.dropstart {
+    .drop-content {
+        position: absolute;
+        margin-top: 30px;
+        margin-right: 10px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        &.show {
+            margin-top: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+        &[data-drop-position="end"] {
+            margin-bottom: 10px;
+        }
+        &[data-drop-position="end"].show {
+            margin-bottom: 0;
+        }
+    }
+}
+// Dropend
+.dropend {
+    .drop-content {
+        position: absolute;
+        margin-top: 30px;
+        margin-left: 10px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        &.show {
+            margin-top: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+        &[data-drop-position="end"] {
+            margin-bottom: 10px;
+        }
+        &[data-drop-position="end"].show {
+            margin-bottom: 0;
+        }
+    }
+}
+// Drop
+.drop {
+    &-content {
+        --drop-width: auto;
+        --drop-border-radius: 10px;
+        --drop-padding: 5px;
+        --drop-min-width: 100px;
+
+        min-width: var(--drop-min-width);
+        width: var(--drop-width);
+        margin: var(--drop-offset);
+        border-radius: var(--drop-border-radius);
+        transform: var(--drop-transform);
+        padding: var(--drop-padding);
+        background-color: #fff;
+        box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+    }
+}
+$drop-sizes: (
+    "sm": (
+        120px,
+        5px,
+        10px,
+    ),
+    "md": (
+        150px,
+        6px,
+        11px,
+    ),
+    "lg": (
+        200px,
+        7px,
+        12px,
+    ),
+);
+@each $size, $values in $drop-sizes {
+    .drop-content-#{$size} {
+        --drop-width: #{nth($values, 1)};
+        --drop-padding: #{nth($values, 2)};
+        --drop-border-radius: #{nth($values, 3)};
+    }
+}
+// Dropmenu
+.dropmenu {
+    list-style: none;
+    @include flex(
+        (
+            direction: column,
+            gap: 3px,
+        )
+    );
+    &-item {
+        a,
+        button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 12px;
+            transition: 0.2s;
+            border-radius: 6px;
+            white-space: nowrap;
+            cursor: pointer;
+            width: 100%;
+            &:hover {
+                background-color: lighten($color-dark, 97%);
+            }
+            &:focus,
+            &:active {
+                color: $color-dark;
+                background: lighten($color-dark, 94%);
+            }
+            &.active {
+                color: $color-primary;
+                background: lighten($color-primary, 40%);
+                &:hover {
+                    background: lighten($color-primary, 38%);
+                }
+            }
+            &.danger {
+                color: $color-red;
+                &:hover {
+                    background: lighten($color-red, 39%);
+                }
+                &:active,
+                &:focus {
+                    background: lighten($color-red, 38%);
+                }
+            }
+            &:disabled,
+            &.disabled {
+                color: lighten($color-dark, 60%);
+                pointer-events: none;
+            }
+        }
+    }
+    &-divider {
+        margin: 2px 0;
+        padding: 0;
+        height: 0;
+        border: none;
+        border-top: 1px solid lighten($color-dark, 94%);
+    }
+    &-header {
+        font-family: var(--font-title);
+        padding: 5px 12px;
+        font-weight: 600;
+        font-size: 14px;
+    }
+}

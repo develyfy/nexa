@@ -1,0 +1,97 @@
+// -----------------------------------------
+// Pane
+// -----------------------------------------
+
+$pane-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+// Pane start
+.panestart {
+    &-content {
+        --pane-start-width: 250px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        opacity: 0;
+        width: 100%;
+        max-width: var(--pane-start-width);
+        height: 100vh;
+        background-color: var(--options-bg);
+        transform: translateX(-100%);
+        transition: $pane-transition;
+        z-index: $z-index-4;
+        &.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+// Pane end
+.paneend {
+    &-content {
+        --pane-start-width: 250px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        visibility: hidden;
+        opacity: 0;
+        width: 100%;
+        max-width: var(--pane-start-width);
+        height: 100vh;
+        background-color: var(--options-bg);
+        transform: translateX(100%);
+        transition: $pane-transition;
+        z-index: $z-index-4;
+        &.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+// Pane up
+.paneup {
+    &-content {
+        --pane-start-height: 250px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        visibility: hidden;
+        opacity: 0;
+        width: 100%;
+        height: var(--pane-start-height);
+        background-color: var(--options-bg);
+        transform: translateY(-100%);
+        transition: $pane-transition;
+        z-index: $z-index-4;
+        &.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+// Pane down
+.panedown {
+    &-content {
+        --pane-start-height: 250px;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        visibility: hidden;
+        opacity: 0;
+        width: 100%;
+        height: var(--pane-start-height);
+        background-color: var(--options-bg);
+        transform: translateY(100%);
+        transition: $pane-transition;
+        z-index: $z-index-4;
+        &.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

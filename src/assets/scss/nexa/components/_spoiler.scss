@@ -1,0 +1,13 @@
+.spoiler-content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+
+    &.show {
+        max-height: 500px;
+    }
+}
+
+// .spoiler-toggle.active {
+//     /* Тут можешь добавить стили для активного состояния */
+// }

@@ -1,0 +1,89 @@
+//------------------------------------------------
+// Grid
+//
+// Classes: .grid, grid-[number], grid-[adaptive-classes]-[numbers], .grid-gap-[numbers], .grid-gap-[adaptive-classes]-[numbers]
+// .grid-gap-x-[numbers], .grid-gap-x-[adaptive-classes]-[numbers], .grid-gap-y-[numbers], .grid-gap-y-[adaptive-classes]-[numvers]
+// .col-[numbers], .col-[adaptive-classes]-[numbers]
+//------------------------------------------------
+$gap-values: (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100);
+
+@mixin grid-columns($columns: $grid-max-columns) {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+}
+
+@mixin responsive-grid($breakpoint, $columns) {
+    @media (min-width: map-get($media-breakpoints, $breakpoint)) {
+        grid-template-columns: repeat($columns, 1fr);
+    }
+}
+
+.grid {
+    @include grid-columns();
+}
+
+@for $i from 1 through $grid-max-columns {
+    .grid-#{$i} {
+        @include grid-columns($i);
+    }
+}
+
+@each $breakpoint, $width in $media-breakpoints {
+    @for $i from 1 through $grid-max-columns {
+        .grid-#{$breakpoint}-#{$i} {
+            @include responsive-grid($breakpoint, $i);
+        }
+    }
+}
+
+[class^="col"] {
+    grid-column: span $grid-max-columns;
+}
+
+@for $i from 1 through $grid-max-columns {
+    .col-#{$i} {
+        grid-column: span $i;
+    }
+}
+
+@each $breakpoint, $width in $media-breakpoints {
+    @for $i from 1 through $grid-max-columns {
+        .col-#{$breakpoint}-#{$i} {
+            @media (min-width: map-get($media-breakpoints, $breakpoint)) {
+                grid-column: span $i;
+            }
+        }
+    }
+}
+
+@each $gap in $gap-values {
+    .grid-gap-#{$gap} {
+        gap: #{$gap}px;
+    }
+    .grid-gap-x-#{$gap} {
+        column-gap: #{$gap}px;
+    }
+    .grid-gap-y-#{$gap} {
+        row-gap: #{$gap}px;
+    }
+}
+
+@each $breakpoint, $width in $media-breakpoints {
+    @each $gap in $gap-values {
+        .grid-gap-#{$breakpoint}-#{$gap} {
+            @media (min-width: map-get($media-breakpoints, $breakpoint)) {
+                gap: #{$gap}px;
+            }
+        }
+        .grid-gap-#{$breakpoint}-x-#{$gap} {
+            @media (min-width: map-get($media-breakpoints, $breakpoint)) {
+                column-gap: #{$gap}px;
+            }
+        }
+        .grid-gap-#{$breakpoint}-y-#{$gap} {
+            @media (min-width: map-get($media-breakpoints, $breakpoint)) {
+                row-gap: #{$gap}px;
+            }
+        }
+    }
+}

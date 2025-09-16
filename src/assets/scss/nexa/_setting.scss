@@ -1,0 +1,122 @@
+// --------------------------------------------------------
+// Setting
+// --------------------------------------------------------
+
+// Media braikpoints (mobile, tablet, laptop,desctop,display)
+$media-breakpoints: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px,
+);
+
+// Container
+$container-offset-default: 15px;
+$container-width: (
+    sm: (
+        520px,
+        13px,
+    ),
+    md: (
+        700px,
+        15px,
+    ),
+    lg: (
+        940px,
+        20px,
+    ),
+    xl: (
+        1120px,
+        25px,
+    ),
+    xxl: (
+        1300px,
+        30px,
+    ),
+);
+// Setting sizes (button, forms)
+
+$size-default: 36px;
+$size-sm: 28px;
+$size-md: 36px;
+$size-lg: 44px;
+
+// Grid
+$grid-max-columns: 12;
+
+// Offsets (margin,padding, gap)
+$offset-1: 5px;
+$offset-2: 10px;
+$offset-3: 15px;
+$offset-4: 20px;
+$offset-5: 25px;
+
+// Z-index
+$z-index-1: 1000;
+$z-index-2: 1010;
+$z-index-3: 1020;
+$z-index-4: 1030;
+$z-index-5: 1040;
+$z-index-6: 1050;
+
+// Fonts
+$font-primary: "Roboto", sans-serif;
+$font-secondary: "Inter", sans-serif;
+
+// Color palette
+$color-primary: #1677ff;
+$color-secondary: #ebebeb;
+$color-green: #52c41a;
+$color-red: #f5222d;
+$color-orange: #faad14;
+$color-light-gray: #eee;
+$color-dark: #000;
+$color-white: #fff;
+
+// Button
+
+$button-color: (
+    "primary": $color-primary,
+    "secondary": $color-secondary,
+    "dark": #333,
+    "white": #fff,
+    "green": #22c55e,
+    "orange": #f97316,
+    "red": #dc2626,
+);
+// Button values: height, font-size, font-weight, padding-inline, border-radius, gap
+$button-sizes: (
+    "default": (
+        $size-default,
+        14px,
+        500,
+        20px,
+        10px,
+        6px,
+    ),
+    "sm": (
+        $size-sm,
+        13px,
+        500,
+        16px,
+        8px,
+        6px,
+    ),
+    "md": (
+        $size-md,
+        14px,
+        500,
+        20px,
+        10px,
+        8px,
+    ),
+    "lg": (
+        $size-lg,
+        16px,
+        500,
+        24px,
+        14px,
+        10px,
+    ),
+);

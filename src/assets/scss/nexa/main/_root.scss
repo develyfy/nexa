@@ -1,0 +1,30 @@
+// Цветовые палитры
+
+:root,
+[data-theme="light"] {
+    --font-text: #{$font-primary};
+    --font-title: #{$font-secondary};
+    --font-button: #{$font-secondary};
+
+    @include theme($default-theme, $default-scheme);
+}
+
+@if $data-theme-dark {
+    [data-theme="dark"] {
+        @include theme(dark, $default-scheme);
+    }
+} @else if $auto-theme {
+    @media (prefers-color-scheme: dark) {
+        :root {
+            @include theme(dark, $default-scheme);
+        }
+    }
+}
+
+body {
+    font-family: var(--font-text);
+    font-size: 16px;
+    line-height: 1.4;
+    background-color: var(--body-bg);
+    color: var(--color-text);
+}

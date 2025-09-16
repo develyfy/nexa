@@ -1,0 +1,37 @@
+// -----------------------------------------
+// Typography
+// -----------------------------------------
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@mixin title($title-size, $title-weight: 700, $title-lh: 1.2) {
+    font-size: $title-size;
+    font-weight: $title-weight;
+    line-height: $title-lh;
+    font-family: var(--font-title);
+    color: var(--color-title);
+}
+
+h1 {
+    @include title(48px, 800, 1.5);
+}
+
+h2 {
+    @include title(40px, 700, 1.5);
+}
+
+h3 {
+    @include title(32px, 700, 1.5);
+}
+
+h4 {
+    @include title(28px, 700, 1.5);
+}
+
+h5 {
+    @include title(24px, 600, 1.5);
+}
+
+h6 {
+    @include title(20px, 500, 1.5);
+}

@@ -1,0 +1,44 @@
+// Theme setting
+$default-theme: light !default;
+$default-scheme: default !default;
+$auto-theme: true !default;
+$data-theme-dark: true !default;
+
+$schemes: (
+    default: (
+        light: (
+            --body-bg: #fff,
+            --color-text: #000000,
+            --color-title: #0e0e0e,
+            --color-primary: $color-primary,
+            --color-dark: $color-dark,
+            --color-white: $color-white,
+            --color-light-gray: $color-light-gray,
+            --color-secondary: $color-secondary,
+            --color-green: $color-green,
+            --color-red: $color-red,
+            --color-orange: $color-orange,
+            --options-bg: #fff,
+            --border-color: $color-light-gray,
+            --light-icon-color: #353535,
+        ),
+        dark: (
+            --body-bg: #000,
+            --color-text: #ffffff,
+            --color-title: #eee,
+            --options-bg: #161616,
+            --border-color: #333333,
+            --light-icon-color: #cbcbcb,
+        ),
+    ),
+    blue: (
+        light: (
+            --bg-color: #e3f2fd,
+            --text-color: #0d47a1,
+        ),
+        dark: (
+            --bg-color: #0d47a1,
+            --text-color: #bbdefb,
+        ),
+    ),
+);

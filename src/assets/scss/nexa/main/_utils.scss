@@ -1,0 +1,183 @@
+// --------------------------------------------------------
+// Utils
+// --------------------------------------------------------
+
+// Offsets
+$offset-sizes: (
+    auto: auto,
+    0: 0,
+    1: $offset-1,
+    2: $offset-2,
+    3: $offset-3,
+    4: $offset-4,
+    5: $offset-5,
+);
+
+@for $i from 10 through 200 {
+    @if $i % 5 == 0 {
+        $offset-sizes: map-merge($offset-sizes, (#{$i}: #{$i}px));
+    }
+}
+
+@each $offset-size, $offset-value in $offset-sizes {
+    .m-#{$offset-size} {
+        margin: $offset-value !important;
+    }
+    .mt-#{$offset-size} {
+        margin-top: $offset-value !important;
+    }
+    .me-#{$offset-size} {
+        margin-right: $offset-value !important;
+    }
+    .mb-#{$offset-size} {
+        margin-bottom: $offset-value !important;
+    }
+    .ms-#{$offset-size} {
+        margin-left: $offset-value !important;
+    }
+    .mx-#{$offset-size} {
+        margin-inline: $offset-value !important;
+    }
+    .my-#{$offset-size} {
+        margin-block: $offset-value !important;
+    }
+    .p-#{$offset-size} {
+        padding: $offset-value !important;
+    }
+    .pt-#{$offset-size} {
+        padding-top: $offset-value !important;
+    }
+    .pe-#{$offset-size} {
+        padding-right: $offset-value !important;
+    }
+    .pb-#{$offset-size} {
+        padding-bottom: $offset-value !important;
+    }
+    .ps-#{$offset-size} {
+        padding-left: $offset-value !important;
+    }
+    .px-#{$offset-size} {
+        padding-inline: $offset-value !important;
+    }
+    .py-#{$offset-size} {
+        padding-block: $offset-value !important;
+    }
+    .gap-#{$offset-size} {
+        gap: $offset-value !important;
+    }
+}
+// Z-index
+$z-index-values: (
+    0: 0,
+    1: $z-index-1,
+    2: $z-index-2,
+    3: $z-index-3,
+    4: $z-index-4,
+    5: $z-index-5,
+    6: $z-index-6,
+);
+
+@each $key, $value in $z-index-values {
+    .z-index-#{$key} {
+        z-index: $value;
+    }
+}
+// Display
+.flex {
+    display: flex !important;
+    &-wrap {
+        @include flex(
+            (
+                wrap: wrap,
+            )
+        );
+    }
+    &-nowrap {
+        @include flex(
+            (
+                wrap: nowrap,
+            )
+        );
+    }
+    &-column {
+        @include flex(
+            (
+                direction: column,
+            )
+        );
+    }
+    &-space-between {
+        @include flex(
+            (
+                justify: space-between,
+            )
+        );
+    }
+    &-center {
+        @include flex(
+            (
+                justify: center,
+                align: center,
+            )
+        );
+    }
+}
+
+.align-items {
+    &-start {
+        align-items: start !important;
+    }
+    &-center {
+        align-items: center !important;
+    }
+    &-end {
+        align-items: end !important;
+    }
+}
+// Position
+.p {
+    &-absolute {
+        position: absolute !important;
+    }
+    &-relative {
+        position: relative !important;
+    }
+    &-fixed {
+        position: fixed;
+    }
+    &-sticky {
+        position: sticky;
+    }
+}
+@mixin generate-position-classes($range: 100) {
+    @for $i from 0 through $range {
+        .top-#{$i} {
+            top: #{$i}px;
+        }
+        .bottom-#{$i} {
+            bottom: #{$i}px;
+        }
+        .start-#{$i} {
+            left: #{$i}px;
+        }
+        .end-#{$i} {
+            right: #{$i}px;
+        }
+    }
+}
+
+@include generate-position-classes(100);
+
+// Backdrop
+.backdrop {
+    &::before {
+        content: "";
+        position: fixed;
+        inset: 0 0 0 0;
+        height: 100vh;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        transition: 0.3s;
+        z-index: $z-index-3;
+    }
+}

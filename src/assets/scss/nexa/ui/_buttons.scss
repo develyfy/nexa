@@ -1,0 +1,246 @@
+// -----------------------------------------
+// Buttons
+// -----------------------------------------
+$button-border-radius: true;
+$button-color: (
+    "primary": $color-primary,
+    "secondary": $color-secondary,
+    "dark": #333,
+    "white": #fff,
+    "green": #22c55e,
+    "orange": #f97316,
+    "red": #dc2626,
+);
+
+@mixin button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-family: var(--font-button);
+    white-space: nowrap;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+    user-select: none;
+    touch-action: manipulation;
+    gap: nth(map-get($button-sizes, "default"), 6);
+
+    &:disabled {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+}
+
+@mixin button-variant($color) {
+    background-color: $color;
+    color: if(lightness($color) > 60, #333, #fff);
+    &:hover {
+        background-color: darken($color, 8%);
+    }
+    &:focus,
+    &:active,
+    &.active {
+        background-color: darken($color, 10%);
+    }
+}
+
+@mixin button-outline-variant($color) {
+    background-color: transparent;
+    color: if(lightness($color) > 60, #333, $color);
+    border: 1px solid $color;
+    &:hover {
+        background-color: $color;
+        color: if(lightness($color) > 60, #333, #fff);
+    }
+    &:focus,
+    &:active,
+    &.active {
+        border-color: darken($color, 10%);
+        background-color: if(lightness($color) > 60, lighten($color, 40%), darken($color, 10%));
+        color: if(lightness($color) > 60, #333, #fff);
+    }
+}
+
+@mixin button-dashed-variant($color) {
+    background-color: transparent;
+    color: if(lightness($color) > 60, #333, $color);
+    border: 1px dashed $color;
+    &:hover {
+        background-color: $color;
+        color: if(lightness($color) > 60, #333, #fff);
+    }
+    &:focus,
+    &:active,
+    &.active {
+        border-color: darken($color, 10%);
+        background-color: if(lightness($color) > 60, lighten($color, 40%), darken($color, 10%));
+        color: if(lightness($color) > 60, #333, #fff);
+    }
+}
+
+@mixin button-text-variant($color) {
+    background-color: transparent;
+    color: if(lightness($color) > 60, #333, $color);
+    &:hover,
+    &:active,
+    &.active {
+        background-color: $color;
+        color: if(lightness($color) > 60, #333, #fff);
+    }
+}
+
+@mixin button-muted-variant($color) {
+    background-color: lighten($color, 40%);
+    color: if(lightness($color) > 60, #333, $color);
+    &:hover {
+        background-color: darken(lighten($color, 60%), 10%);
+    }
+    &:focus,
+    &:active {
+        background-color: darken(lighten($color, 40%), 10%);
+    }
+}
+
+@mixin button-link-variant($color) {
+    background-color: transparent;
+    color: if(lightness($color) > 60, #333, $color);
+    text-decoration: none;
+    &:hover {
+        color: lighten($color, 10%);
+    }
+    &:focus,
+    &:active,
+    &.active {
+        color: darken($color, 10%);
+    }
+}
+
+.btn {
+    @include button-base;
+    height: nth(map-get($button-sizes, "default"), 1);
+    font-size: nth(map-get($button-sizes, "default"), 2);
+    font-weight: nth(map-get($button-sizes, "default"), 3);
+    padding-inline: nth(map-get($button-sizes, "default"), 4);
+    border-radius: if($button-border-radius, nth(map-get($button-sizes, "default"), 5), 0);
+    gap: nth(map-get($button-sizes, "default"), 6);
+
+    &.btn-icon-start {
+        padding-left: 5px;
+    }
+
+    &.btn-icon-end {
+        padding-right: 5px;
+    }
+}
+.btn-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(nth(map-get($button-sizes, "default"), 1) - 8px);
+    height: calc(nth(map-get($button-sizes, "default"), 1) - 8px);
+    border-radius: if($button-border-radius, calc(nth(map-get($button-sizes, "default"), 5) - 2px), 0);
+
+    background-color: rgba(255, 255, 255, 0.2);
+}
+@mixin button-shadow-variant($color) {
+    box-shadow: 0 4px 10px rgba(lighten($color, 10%), 0.3);
+}
+@each $name, $color in $button-color {
+    .btn-#{$name} {
+        @include button-variant($color);
+        &.btn-shadow {
+            @include button-shadow-variant($color);
+        }
+    }
+    .btn-outline-#{$name} {
+        @include button-outline-variant($color);
+    }
+    .btn-dashed-#{$name} {
+        @include button-dashed-variant($color);
+    }
+    .btn-text-#{$name} {
+        @include button-text-variant($color);
+    }
+    .btn-muted-#{$name} {
+        @include button-muted-variant($color);
+    }
+    .btn-link-#{$name} {
+        @include button-link-variant($color);
+    }
+    .btn-#{$name} .btn-icon-box {
+        background-color: lighten($color, 10%);
+    }
+}
+
+@each $size, $values in $button-sizes {
+    .btn-#{$size} {
+        height: nth($values, 1);
+        font-size: nth($values, 2);
+        font-weight: nth($values, 3);
+        padding-inline: nth($values, 4);
+        border-radius: if($button-border-radius, nth($values, 5), 0);
+        gap: nth($values, 6);
+
+        .btn-icon-box {
+            width: calc(nth($values, 1) - 8px);
+            height: calc(nth($values, 1) - 8px);
+            border-radius: if($button-border-radius, calc(nth($values, 5) - 2px), 0);
+        }
+    }
+}
+
+.btn-circle {
+    border-radius: 50%;
+    width: auto;
+    min-width: nth(map-get($button-sizes, "default"), 1);
+    height: nth(map-get($button-sizes, "default"), 1);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@each $size, $values in $button-sizes {
+    .btn-circle.btn-#{$size} {
+        width: nth($values, 1);
+        min-width: nth($values, 1);
+        height: nth($values, 1);
+    }
+}
+
+.btn-rounded {
+    border-radius: 50px;
+    & .btn-icon-box {
+        border-radius: 50%;
+    }
+}
+.btn-group {
+    display: inline-flex;
+
+    .btn {
+        border-radius: if($button-border-radius, nth(map-get($button-sizes, "default"), 5), 0);
+        &:not(:first-child) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        &:not(:last-child) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    @each $name, $color in $button-color {
+        .btn-outline-#{$name},
+        .btn-dashed-#{$name} {
+            &:not(:first-child) {
+                border-left: none;
+            }
+        }
+    }
+}
+.btn-full {
+    width: 100%;
+}
