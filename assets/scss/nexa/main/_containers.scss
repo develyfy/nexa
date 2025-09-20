@@ -1,0 +1,68 @@
+//------------------------------------------------
+// Container
+//
+// Classes:  container-[adaptive-classes], .container-fluid, .container-[number] (500-1500px)
+//------------------------------------------------
+
+@mixin make-container($container-settings: null, $container-fluid: false) {
+    $container-max-width: if($container-settings, nth($container-settings, 1), null);
+    $container-offset: if($container-settings, nth($container-settings, 2), $container-offset-default);
+
+    --container-offset: #{$container-offset};
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: var(--container-offset, 0);
+    padding-right: var(--container-offset, 0);
+
+    @if not $container-fluid and $container-max-width {
+        max-width: $container-max-width;
+    }
+}
+// Default-container
+.container {
+    @include make-container(map-get($container-width, sm));
+
+    @each $media-name, $media-width in $media-breakpoints {
+        @media (min-width: #{$media-width}) {
+            @include make-container(map-get($container-width, $media-name));
+        }
+    }
+}
+
+// Root offset
+:root {
+    --container-offset: #{nth(map-get($container-width, sm), 2)};
+
+    @each $media-name, $media-width in $media-breakpoints {
+        @media (min-width: #{$media-width}) {
+            --container-offset: #{nth(map-get($container-width, $media-name), 2)};
+        }
+    }
+}
+
+// Adaptive container
+@each $media-name, $media-width in $media-breakpoints {
+    .container-#{$media-name} {
+        max-width: #{nth(map-get($container-width, $media-name), 1)};
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: var(--container-offset);
+        padding-right: var(--container-offset);
+    }
+}
+
+// Container fluid
+.container-fluid {
+    @include make-container($container-fluid: true);
+}
+
+// Custom static container
+@for $i from 500 through 1500 {
+    @if $i % 10 == 0 {
+        .container-#{$i} {
+            @include make-container(($i + px, 15px));
+        }
+    }
+}

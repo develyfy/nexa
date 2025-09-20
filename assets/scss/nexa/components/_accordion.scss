@@ -1,0 +1,9 @@
+.accordion .accordion-content {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+.accordion .accordion-item.active .accordion-content {
+    height: auto;
+}

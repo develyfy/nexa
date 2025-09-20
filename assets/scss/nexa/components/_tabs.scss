@@ -1,0 +1,25 @@
+// -----------------------------------------
+// Tabs
+// -----------------------------------------
+
+.tabs {
+    display: grid;
+
+    &-content {
+        grid-area: 1 / 1;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(30px);
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s;
+        height: 0;
+        overflow: hidden;
+
+        &.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            height: auto;
+            overflow: visible;
+        }
+    }
+}

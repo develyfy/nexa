@@ -72,3 +72,30 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 hljs.highlightAll();
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("pre code").forEach((block) => {
+        // оборачиваем блок в контейнер
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("code-wrapper");
+        block.parentNode.replaceWith(wrapper);
+        wrapper.appendChild(block.parentNode);
+
+        // создаём кнопку
+        const button = document.createElement("button");
+        button.className = "copy-btn";
+        wrapper.appendChild(button);
+
+        // обработчик копирования
+        button.addEventListener("click", async () => {
+            const code = block.innerText;
+            try {
+                await navigator.clipboard.writeText(code);
+                button.classList.add("copy");
+                setTimeout(() => button.classList.remove("copy"), 2000);
+            } catch (err) {
+                console.error("Ошибка копирования: ", err);
+            }
+        });
+    });
+});
