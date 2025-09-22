@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Nexa</title>
+        <title>Nexa - Containers</title>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
@@ -34,7 +34,7 @@
                             </button>
                             <div class="accordion-content">
                                 <ul class="sidebar__submenu">
-                                    <li class="sidebar__submenu-item"><a href="/demo/home-containers.html">Containers</a></li>
+                                    <li class="sidebar__submenu-item active"><a href="/demo/home-containers.html">Containers</a></li>
                                     <li class="sidebar__submenu-item"><a href="#">Grid</a></li>
                                     <li class="sidebar__submenu-item"><a href="#">Flex</a></li>
                                     <li class="sidebar__submenu-item"><a href="#">Theme</a></li>
@@ -88,7 +88,52 @@
                 </div>
             </aside>
             <div class="content">
-                <div class="card">12341234</div>
+                <div class="card">
+                    <h1 class="content__title mb-3">Containers</h1>
+                    <p>
+                        Контейнеры представляют собой набор ограничивающих ширину контейта классов для формирования тела сайта с набором настроек и
+                        адаптивных поведеньческих факторов.
+                    </p>
+
+                    <div class="content__head">Статический контейнер</div>
+                    <p>
+                        Статические контейнеры имеют ограниченную настраиваемую максимальную ширину, а далее становятся адаптивными. Утилитарный класс
+                        <span class="class">.container-500</span> имеет настраеваемую зону от 500 до 1500px с шагом 10px.
+                    </p>
+
+                    <div class="container-500">
+                        <div class="demobox">.container-500</div>
+                    </div>
+
+                    <div class="content__head mt-30">Резиновый контейнер</div>
+                    <p>Резиновый контейнер всегда имеет 100% ширину и отступы. Утилитарный класс <span class="class">.container-fluid</span></p>
+
+                    <div class="container-fluid">
+                        <div class="demobox">.container-fluid</div>
+                    </div>
+
+                    <div class="content__head mt-30">Адаптивный контейнер</div>
+                    <p>
+                        Адаптивый контейнер имеет разную стартовую ширину и меняется в зависимости от расширения экрана. Утилитарный класс имеет 5
+                        видов в зависимости от расширения экрана: xxl,xl, lg, md, sm. Пример <span class="class">.container-sm</span>
+                    </p>
+
+                    <div class="container-sm">
+                        <div class="demobox">.container-sm</div>
+                    </div>
+                    <div class="container-md mt-3">
+                        <div class="demobox">.container-md</div>
+                    </div>
+                    <div class="container-lg mt-3">
+                        <div class="demobox">.container-lg</div>
+                    </div>
+                    <div class="container-xl mt-3">
+                        <div class="demobox">.container-xl</div>
+                    </div>
+                    <div class="container-xxl mt-3">
+                        <div class="demobox">.container-xxl</div>
+                    </div>
+                </div>
             </div>
         </main>
     </body>
