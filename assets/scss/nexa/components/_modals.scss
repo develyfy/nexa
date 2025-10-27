@@ -1,26 +1,15 @@
-// -----------------------------------------
-// Modals
-// -----------------------------------------
+// ==========================================================
+//  MODALS
+// ==========================================================
 
-$modal-sizes: (
-    "default": (
-        500px,
-        15px,
-    ),
-    "sm": (
-        300px,
-        10px,
-    ),
-    "md": (
-        500px,
-        15px,
-    ),
-    "lg": (
-        700px,
-        20px,
-    ),
-);
+//  Dependencies:
+@use "../setting" as *;
+@use "../main/themes" as *;
+@use "../main/mixins" as *;
+@use "sass:map";
+@use "sass:color";
 
+// Modal
 .modal {
     --modal-align: center;
     display: flex;
@@ -34,27 +23,25 @@ $modal-sizes: (
     background: rgba(0, 0, 0, 0);
     opacity: 0;
     visibility: hidden;
-    transition: background 0.1s ease-in, opacity 0.3s ease-in;
+    transition: map.get($nexa-transition, backdrop);
     padding: 20px;
-
+    z-index: map.get($nexa-z-index, 3);
     &-start {
         --modal-align: start;
     }
     &-end {
         --modal-align: end;
     }
-
     &-content {
-        --modal-content-bg: var(--options-bg);
+        --modal-content-bg: var(--modal-bg);
         background: var(--modal-content-bg);
         width: 100%;
-        max-width: nth(map-get($modal-sizes, "default"), 1); // Применяем max-width из default
-        border-radius: nth(map-get($modal-sizes, "default"), 2); // Применяем border-radius из default
-        transform: translateY(50px);
-        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-        opacity: 1;
-        max-height: calc(100vh - 40px);
+        max-width: map.get(map.get($nexa-modals, default), max-width);
+        border-radius: map.get(map.get($nexa-modals, default), border-radius);
         overflow: hidden;
+        transform: translateY(50px);
+        transition: map.get($nexa-transition, modal);
+        opacity: 1;
     }
 
     &-container {
@@ -62,55 +49,39 @@ $modal-sizes: (
         max-height: 70vh;
         overflow-y: auto;
         &-border {
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+            border-top: 1px solid var(--modal-border-color);
+            border-bottom: 1px solid var(--modal-border-color);
             padding-block: 20px;
         }
     }
-
     &-header,
     &-footer {
         padding: 20px;
     }
 
     &-title {
-        font-size: 22px;
+        font-size: 1.5rem;
         font-weight: 600;
-        font-family: $font-secondary;
+        font-family: map.get($nexa-setting, font-title);
     }
 
     &-close {
-        --modal-close: 20px;
-        width: var(--modal-close);
-        height: var(--modal-close);
-        position: relative;
+        --modal-close-size: 22px;
         display: block;
-        transition: 0.2s;
-        opacity: 0.3;
-
+        position: absolute;
+        top: 24px;
+        right: 20px;
+        width: var(--modal-close-size);
+        height: var(--modal-close-size);
+        background-color: var(--modal-close-icon);
+        mask: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 1024 1024'%3e%3ctitle%3eClose-outlined SVG Icon%3c/title%3e%3cpath fill='black' fill-rule='evenodd' d='M799.855 166.312c.023.007.043.018.084.059l57.69 57.69c.041.041.052.06.059.084a.118.118 0 0 1 0 .069c-.007.023-.018.042-.059.083L569.926 512l287.703 287.703c.041.04.052.06.059.083a.118.118 0 0 1 0 .07c-.007.022-.018.042-.059.083l-57.69 57.69c-.041.041-.06.052-.084.059a.118.118 0 0 1-.069 0c-.023-.007-.042-.018-.083-.059L512 569.926L224.297 857.629c-.04.041-.06.052-.083.059a.118.118 0 0 1-.07 0c-.022-.007-.042-.018-.083-.059l-57.69-57.69c-.041-.041-.052-.06-.059-.084a.118.118 0 0 1 0-.069c.007-.023.018-.042.059-.083L454.073 512L166.371 224.297c-.041-.04-.052-.06-.059-.083a.118.118 0 0 1 0-.07c.007-.022.018-.042.059-.083l57.69-57.69c.041-.041.06-.052.084-.059a.118.118 0 0 1 .069 0c.023.007.042.018.083.059L512 454.073l287.703-287.702c.04-.041.06-.052.083-.059a.118.118 0 0 1 .07 0Z'/%3e%3c/svg%3e")
+            no-repeat center / contain;
+        -webkit-mask: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 1024 1024'%3e%3ctitle%3eClose-outlined SVG Icon%3c/title%3e%3cpath fill='black' fill-rule='evenodd' d='M799.855 166.312c.023.007.043.018.084.059l57.69 57.69c.041.041.052.06.059.084a.118.118 0 0 1 0 .069c-.007.023-.018.042-.059.083L569.926 512l287.703 287.703c.041.04.052.06.059.083a.118.118 0 0 1 0 .07c-.007.022-.018.042-.059.083l-57.69 57.69c-.041.041-.06.052-.084.059a.118.118 0 0 1-.069 0c-.023-.007-.042-.018-.083-.059L512 569.926L224.297 857.629c-.04.041-.06.052-.083.059a.118.118 0 0 1-.07 0c-.022-.007-.042-.018-.083-.059l-57.69-57.69c-.041-.041-.052-.06-.059-.084a.118.118 0 0 1 0-.069c.007-.023.018-.042.059-.083L454.073 512L166.371 224.297c-.041-.04-.052-.06-.059-.083a.118.118 0 0 1 0-.07c.007-.022.018-.042.059-.083l57.69-57.69c.041-.041.06-.052.084-.059a.118.118 0 0 1 .069 0c.023.007.042.018.083.059L512 454.073l287.703-287.702c.04-.041.06-.052.083-.059a.118.118 0 0 1 .07 0Z'/%3e%3c/svg%3e")
+            no-repeat center / contain;
+        opacity: 0.5;
+        transition: map.get($nexa-transition, button);
         &:hover {
             opacity: 1;
-        }
-
-        &::before,
-        &::after {
-            content: "";
-            width: var(--modal-close);
-            height: 2px;
-            background-color: var(--light-icon-color);
-            position: absolute;
-        }
-
-        &::before {
-            top: 0;
-            left: 0;
-            transform: rotate(45deg);
-        }
-
-        &::after {
-            top: 0;
-            right: 0;
-            transform: rotate(-45deg);
         }
     }
     &-full {
@@ -121,39 +92,34 @@ $modal-sizes: (
             min-height: 100vh;
         }
     }
+    &.active {
+        background: var(--backdrop-bg);
+        opacity: 1;
+        visibility: visible;
+        .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    &.closing {
+        opacity: 0;
+        background: rgba(0, 0, 0, 0);
+        transition: opacity 0.3s ease-out, background 0.3s ease-out;
+        .modal-content {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+    }
+    &-container {
+        overflow-y: auto;
+        height: 100%;
+    }
 }
-
-.modal.active {
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal.closing {
-    opacity: 0;
-    background: rgba(0, 0, 0, 0);
-    transition: opacity 0.3s ease-out, background 0.3s ease-out;
-}
-
-.modal-container {
-    overflow-y: auto;
-    height: 100%;
-}
-
-.modal.active .modal-content {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.modal.closing .modal-content {
-    transform: translateY(50px);
-    opacity: 0;
-}
-
-// Автоматическое применение размеров для других модальных окон
-@each $size, $values in $modal-sizes {
-    .modal-#{$size} .modal-content {
-        max-width: nth($values, 1);
-        border-radius: nth($values, 2);
+@each $size, $values in $nexa-modals {
+    @if $size != default {
+        .modal-content-#{$size} {
+            max-width: map.get($values, max-width);
+            border-radius: map.get($values, border-radius);
+        }
     }
 }

@@ -1,0 +1,36 @@
+// ==========================================================
+//  DEBUG
+// ==========================================================
+
+//  Dependencies:
+
+@use "../setting" as *;
+@use "sass:map";
+
+$debug: map.get($nexa-setting, debug-mode);
+
+@if $debug {
+    //  Outline of the elements
+    * {
+        outline: 1px dashed red;
+        outline-offset: -1px;
+    }
+    //  Container Grid
+    .container {
+        box-shadow: 0 0 0 1px magenta inset;
+    }
+    //  The debug label
+    body::after {
+        content: "DEBUG on";
+        position: fixed;
+        right: 8px;
+        bottom: 8px;
+        font: 12px/1.2 system-ui;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 4px 6px;
+        border-radius: 4px;
+        pointer-events: none;
+        z-index: 99999;
+    }
+}

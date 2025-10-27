@@ -1,71 +1,39 @@
-// =========================================
-// Nexa CSS Framework
-// Version: 0.1 alpha
-// Developer: HideDev / hidedev.com
-// =========================================
+// ==========================================================
+//  Framework : Nexa
+//  Version   : v1.0.0
+//  Updated   : 27.10.2025
+//  Author    : HideDev
+//  Contacts  : support@hidedev.com · https://hidedev.com · https://t.me/hidedev
+// ==========================================================
 
-// =========================================
-// 1. Core & Configuration
-// =========================================
+// ----------------------------------------------------------
+//  1. SETTINGS / VARIABLES
+// ----------------------------------------------------------
+@use "nexa/setting" as *;
 
-@import "./nexa/setting.scss"; // Global variables and settings
+// ----------------------------------------------------------
+//  2. MAIN CORE
+// ----------------------------------------------------------
+@use "nexa/main/normalize";
+@use "nexa/main/mixins";
+@use "nexa/main/utils";
+@use "nexa/main/root";
+@use "nexa/main/themes";
+@use "nexa/main/debug";
 
-// =========================================
-// 2. Main & Base Styles
-// =========================================
+// ----------------------------------------------------------
+//  3. UI ELEMENTS
+// ----------------------------------------------------------
+@use "nexa/ui/buttons";
+@use "nexa/ui/forms";
+@use "nexa/ui/typography";
 
-// Normalize and reset
-@import "./nexa/main/normalize.scss";
-
-// Functions and mixins
-@import "./nexa/main/mixins.scss";
-
-// Theme configurations
-@import "./nexa/main/themes.scss";
-
-// CSS custom properties
-@import "./nexa/main/root.scss";
-
-// Utility classes
-@import "./nexa/main/utils.scss";
-
-// Layout containers
-@import "./nexa/main/containers.scss";
-
-// Grid system
-@import "./nexa/main/grid.scss";
-
-// =========================================
-// 3. UI Elements
-// =========================================
-
-// Typography system
-@import "./nexa/ui/typography.scss";
-
-// Buttons and interactive elements
-@import "./nexa/ui/buttons.scss";
-
-// Form elements and controls
-@import "./nexa/ui/forms.scss";
-
-// =========================================
-// 4. Components
-// =========================================
-
-// Modal windows
-@import "./nexa/components/modals.scss";
-
-// Dropdown menus
-@import "./nexa/components/drops.scss";
-
-// Tab systems
-@import "./nexa/components/tabs.scss";
-
-// Spoiler/reveal components
-@import "./nexa/components/spoiler.scss";
-
-// Accordion elements
-@import "./nexa/components/accordion.scss";
-
-// Panel components
-@import "./nexa/components/pane.scss";
+// ----------------------------------------------------------
+//  4. COMPONENTS
+// ----------------------------------------------------------
+@use "nexa/components/accordion";
+@use "nexa/components/drops";
+@use "nexa/components/modals";
+@use "nexa/components/pane";
+@use "nexa/components/spoiler";
+@use "nexa/components/tabs";

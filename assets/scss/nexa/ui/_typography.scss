@@ -1,37 +1,49 @@
-// -----------------------------------------
-// Typography
-// -----------------------------------------
+// ==========================================================
+//  TYPOGRAPHY
+// ==========================================================
 
+//  Dependencies:
+@use "../setting" as *;
+@use "../main/mixins" as *;
+@use "../main/themes" as *;
+@use "sass:map";
+
+// Fonts
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
-@mixin title($title-size, $title-weight: 700, $title-lh: 1.2) {
-    font-size: $title-size;
-    font-weight: $title-weight;
-    line-height: $title-lh;
-    font-family: var(--font-title);
-    color: var(--color-title);
-}
-
-h1 {
-    @include title(48px, 800, 1.5);
-}
-
-h2 {
-    @include title(40px, 700, 1.5);
-}
-
-h3 {
-    @include title(32px, 700, 1.5);
-}
-
-h4 {
-    @include title(28px, 700, 1.5);
-}
-
-h5 {
-    @include title(24px, 600, 1.5);
-}
-
+// Title
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
-    @include title(20px, 500, 1.5);
+    margin: 0;
+    font-family: map.get($nexa-setting, font-title);
 }
+
+$heading-order: h1, h2, h3, h4, h5, h6;
+
+@mixin apply-headings($min-vw: 360px, $max-vw: null, $also-classes: true) {
+    $mx: if($max-vw != null, $max-vw, map.get($nexa-setting, container-width));
+
+    @each $h in $heading-order {
+        $cfg: map.get($nexa-headings, $h);
+
+        #{$h} {
+            @include fluid-text(map.get($cfg, small), map.get($cfg, large), $min-vw, $mx);
+            line-height: map.get($cfg, line-height);
+            font-weight: map.get($cfg, font-weight);
+        }
+
+        @if $also-classes {
+            .#{$h} {
+                @include fluid-text(map.get($cfg, small), map.get($cfg, large), $min-vw, $mx);
+                line-height: map.get($cfg, line-height);
+                font-weight: map.get($cfg, font-weight);
+            }
+        }
+    }
+}
+
+@include apply-headings();

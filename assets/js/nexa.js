@@ -1,36 +1,68 @@
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".form-textarea-auto").forEach((textarea) => {
-        textarea.style.minHeight = "100px";
-        textarea.style.overflow = "hidden";
+// --------------------------------------
+// Auto height for textareas
+// --------------------------------------
 
-        const resizeTextarea = (el) => {
-            el.style.height = "auto";
-            el.style.height = el.scrollHeight + "px";
-        };
+const formAutoHeight = false;
 
-        textarea.addEventListener("input", function () {
-            resizeTextarea(this);
+if (formAutoHeight) {
+    const textareas = document.querySelectorAll(".form-textarea");
+
+    if (textareas.length > 0) {
+        textareas.forEach((textarea) => {
+            textarea.style.overflowY = "hidden";
+
+            const minHeight = parseInt(getComputedStyle(textarea).getPropertyValue("--textarea-min-height")) || 0;
+
+            const resize = () => {
+                textarea.style.height = "auto";
+                textarea.style.height = Math.max(textarea.scrollHeight, minHeight) + "px";
+            };
+
+            resize();
+
+            textarea.addEventListener("input", resize);
+
+            textarea.addEventListener("change", resize);
         });
+    }
+}
 
-        resizeTextarea(textarea);
-    });
-});
+// --------------------------------------
 // Modal
+// --------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
+    const body = document.body;
+    let scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    function lockBodyScroll() {
+        body.style.overflow = "hidden";
+        body.style.paddingRight = `${scrollBarWidth}px`;
+    }
+
+    function unlockBodyScroll() {
+        body.style.overflow = "";
+        body.style.paddingRight = "";
+    }
+
     function openModal(modal) {
+        if (!modal) return;
         modal.classList.add("active");
+        lockBodyScroll();
+
         const modalName = modal.getAttribute("data-modal-name");
         if (modalName) {
-            history.pushState(null, null, `#${modalName}`);
+            history.pushState(null, "", `#${modalName}`);
         }
     }
 
     function closeModal(modal) {
+        if (!modal) return;
         modal.classList.add("closing");
         setTimeout(() => {
             modal.classList.remove("active", "closing");
+            unlockBodyScroll();
             if (modal.getAttribute("data-modal-name")) {
-                history.pushState(null, null, window.location.pathname);
+                history.pushState(null, "", window.location.pathname);
             }
         }, 300);
     }
@@ -59,39 +91,40 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Открытие модального окна при загрузке, если есть хеш в URL
-    const hash = window.location.hash.substring(1);
-    if (hash) {
+    const checkAndOpenModalByHash = () => {
+        const hash = window.location.hash.substring(1);
+        if (!hash) return;
+
         const modal = document.querySelector(`[data-modal-name="${hash}"]`);
         if (modal) {
-            openModal(modal);
+            if (!modal.classList.contains("active")) {
+                openModal(modal);
+            }
         }
-    }
+    };
+
+    checkAndOpenModalByHash();
+
+    window.addEventListener("hashchange", checkAndOpenModalByHash);
 });
+
 // --------------------------------------
 // Tabs
 // --------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
-    const saveToStorage = (key, value) => {
-        localStorage.setItem(key, value);
-    };
-
-    const getFromStorage = (key) => {
-        return localStorage.getItem(key);
-    };
-
     const initTabs = () => {
-        document.querySelectorAll(`[data-tabs-container]`).forEach((container) => {
+        document.querySelectorAll("[data-tabs-container]").forEach((container) => {
             container.querySelectorAll("[data-tabs-content]").forEach((content) => {
                 content.classList.remove("show");
             });
         });
+
         document.querySelectorAll("[data-tabs]").forEach((tabGroupTabs) => {
             const groupKeyTabs = tabGroupTabs.getAttribute("data-tabs");
             const buttonsTabs = tabGroupTabs.querySelectorAll("[data-tabs-btn]");
             const containersTabs = document.querySelectorAll(`[data-tabs-container="${groupKeyTabs}"]`);
 
-            const activateTab = (targetTabTabs, updateHash = true, saveToStorageFlag = true) => {
+            const activateTab = (targetTabTabs) => {
                 buttonsTabs.forEach((btn) => {
                     btn.classList.toggle("active", btn.getAttribute("data-tabs-btn") === targetTabTabs);
                 });
@@ -101,66 +134,34 @@ document.addEventListener("DOMContentLoaded", () => {
                         contentTabs.classList.toggle("show", contentTabs.getAttribute("data-tabs-content") == targetTabTabs);
                     });
                 });
-
-                const activeButton = tabGroupTabs.querySelector(`[data-tabs-btn="${targetTabTabs}"]`);
-                if (activeButton) {
-                    if (updateHash) {
-                        if (activeButton.hasAttribute("data-tabs-name")) {
-                            history.replaceState(null, null, `#${activeButton.getAttribute("data-tabs-name")}`);
-                        } else {
-                            history.replaceState(null, null, " ");
-                        }
-                    }
-                    if (!updateHash && saveToStorageFlag && activeButton.hasAttribute("data-tabs-save")) {
-                        saveToStorage(`tab_${groupKeyTabs}`, targetTabTabs);
-                    }
-                }
             };
 
-            const checkHashOrStorage = () => {
-                const hashTabs = window.location.hash.substring(1);
-                let tabToActivate = null;
-                let fp = 0;
-                const savedTab = getFromStorage(`tab_${groupKeyTabs}`);
-                if (savedTab) {
-                    tabToActivate = savedTab;
-                }
+            const setInitial = () => {
+                const preActive = tabGroupTabs.querySelector("[data-tabs-btn].active");
+                const tabToActivate = preActive?.getAttribute("data-tabs-btn") || buttonsTabs[0]?.getAttribute("data-tabs-btn");
 
-                if (hashTabs != "") {
-                    const buttonWithHash = tabGroupTabs.querySelector(`[data-tabs-name="${hashTabs}"]`);
-                    if (buttonWithHash) {
-                        tabToActivate = buttonWithHash.getAttribute("data-tabs-btn");
-                    }
-                }
-
-                if (!tabToActivate) {
-                    fp = 1;
-                    tabToActivate = buttonsTabs[0]?.getAttribute("data-tabs-btn");
-                }
-
-                if (tabToActivate) {
-                    activateTab(tabToActivate, fp != 1 ? groupKeyTabs == "tags" : false, groupKeyTabs == "cookie");
-                }
+                if (tabToActivate) activateTab(tabToActivate);
             };
 
             buttonsTabs.forEach((buttonTabs) => {
                 buttonTabs.addEventListener("click", () => {
-                    activateTab(buttonTabs.getAttribute("data-tabs-btn"), groupKeyTabs == "tags", groupKeyTabs == "cookie");
+                    activateTab(buttonTabs.getAttribute("data-tabs-btn"));
                 });
             });
 
-            checkHashOrStorage();
+            setInitial();
         });
     };
 
     initTabs();
 });
+
 // --------------------------------
-// Drop
+// Drops
 // --------------------------------
 document.addEventListener("DOMContentLoaded", function () {
-    const defaultDropOpen = "click"; // По умолчанию click
-    const defaultDropDelay = 0.2 * 1000; // По умолчанию 0.2s для hover
+    const defaultDropOpen = "click";
+    const defaultDropDelay = 0.2 * 1000;
     const drops = document.querySelectorAll(".dropdown, .dropup, .dropend, .dropstart");
 
     drops.forEach((drop) => {
@@ -394,9 +395,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-// --------------------------------
+// --------------------------------------
 // Theme
-// --------------------------------
+// --------------------------------------
 const themeToggleButton = document.getElementById("theme-toggle");
 const themeLightButton = document.getElementById("theme-light");
 const themeDarkButton = document.getElementById("theme-dark");
@@ -447,10 +448,9 @@ if (themeDarkButton) {
     themeDarkButton.addEventListener("click", () => setTheme("dark"));
 }
 
-// --------------------------------
+// --------------------------------------
 // Spoiler
-// --------------------------------
-
+// --------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".spoiler > .spoiler-toggle").forEach((button) => {
         button.addEventListener("click", () => {
@@ -469,9 +469,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
-// --------------------------------
+
+// --------------------------------------
 // Accordion
-// --------------------------------
+// --------------------------------------
 document.querySelectorAll(".accordion").forEach((accordion) => {
     const mode = accordion.dataset.accordion || "hide";
 
@@ -523,53 +524,9 @@ document.querySelectorAll(".accordion").forEach((accordion) => {
     });
 });
 
-// --------------------------------
-// Validation
-// --------------------------------
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector("form");
-    if (!form) return;
-
-    const inputs = form.querySelectorAll("[data-valid]");
-    const submitButton = form.querySelector("button[type='submit']");
-
-    const validateInput = (input) => {
-        const isEmpty = input.value.trim() === "";
-        const notify = input.dataset.validNotify === "true";
-        const errorText = input.dataset.validNotifyText || "Это поле обязательно";
-
-        input.classList.toggle("error", isEmpty);
-
-        let errorDiv = input.nextElementSibling;
-        if (errorDiv?.classList.contains("form-error")) {
-            errorDiv.remove();
-        }
-
-        if (isEmpty && notify) {
-            errorDiv = document.createElement("div");
-            errorDiv.className = "form-error";
-            errorDiv.textContent = errorText;
-            input.insertAdjacentElement("afterend", errorDiv);
-        }
-    };
-
-    submitButton.addEventListener("click", (e) => {
-        e.preventDefault();
-        form.querySelectorAll(".form-error").forEach((el) => el.remove());
-        inputs.forEach(validateInput);
-    });
-
-    inputs.forEach((input) => {
-        input.addEventListener("input", () => validateInput(input));
-
-        if (input.dataset.valid.includes("native")) {
-            input.addEventListener("blur", () => validateInput(input));
-        }
-    });
-});
-// --------------------------------
-// Validation
-// --------------------------------
+// --------------------------------------
+// Pane
+// --------------------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("click", (e) => {
@@ -617,9 +574,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// --------------------------------
-// Scroll
-// --------------------------------
+// --------------------------------------
+// Scroll trigger
+// --------------------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
     const elements = document.querySelectorAll("[data-scroll]");
@@ -644,9 +601,41 @@ document.addEventListener("DOMContentLoaded", () => {
 // --------------------------------
 // Date
 // --------------------------------
-
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('[data-date="Y"]').forEach((el) => {
-        el.textContent = new Date().getFullYear();
+    const now = new Date();
+
+    const pad = (num) => String(num).padStart(2, "0");
+
+    const formatDate = (format) => {
+        const map = {
+            Y: now.getFullYear(),
+            y: String(now.getFullYear()).slice(-2),
+            m: pad(now.getMonth() + 1),
+            n: now.getMonth() + 1,
+            d: pad(now.getDate()),
+            j: now.getDate(),
+            H: pad(now.getHours()),
+            G: now.getHours(),
+            i: pad(now.getMinutes()),
+            s: pad(now.getSeconds()),
+            F: now.toLocaleString("ru-RU", { month: "long" }),
+            M: now.toLocaleString("ru-RU", { month: "short" }),
+            l: now.toLocaleString("ru-RU", { weekday: "long" }),
+            D: now.toLocaleString("ru-RU", { weekday: "short" }),
+        };
+
+        return format.replace(/Y|y|m|n|d|j|H|G|i|s|F|M|l|D/g, (token) => map[token] || token);
+    };
+
+    document.querySelectorAll("[data-date]").forEach((el) => {
+        const format = el.getAttribute("data-date");
+
+        if (format === "full") {
+            el.textContent = now.toLocaleDateString("ru-RU");
+        } else if (format === "datetime") {
+            el.textContent = now.toLocaleString("ru-RU");
+        } else {
+            el.textContent = formatDate(format);
+        }
     });
 });

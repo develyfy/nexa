@@ -1,30 +1,49 @@
-// Цветовые палитры
+// ==========================================================
+//  ROOT
+// ==========================================================
 
+//  Dependencies:
+
+@use "../setting" as *;
+@use "themes" as *;
+@use "sass:map";
+
+// Root
 :root,
 [data-theme="light"] {
-    --font-text: #{$font-primary};
-    --font-title: #{$font-secondary};
-    --font-button: #{$font-secondary};
-
-    @include theme($default-theme, $default-scheme);
+    @include theme($theme-skins, $theme-default);
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color-scheme: light dark;
 }
 
-@if $data-theme-dark {
+// Theme generator
+@if $theme-dark {
     [data-theme="dark"] {
-        @include theme(dark, $default-scheme);
+        @include theme($theme-skins, dark);
     }
-} @else if $auto-theme {
+} @else if $theme-auto-repeat {
     @media (prefers-color-scheme: dark) {
         :root {
-            @include theme(dark, $default-scheme);
+            @include theme($theme-skins, dark);
         }
     }
 }
 
+// Body
 body {
-    font-family: var(--font-text);
-    font-size: 16px;
-    line-height: 1.4;
+    font-family: map.get($nexa-setting, font-text), sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans",
+        "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: map.get($nexa-setting, main-font-size);
+    line-height: map.get($nexa-setting, main-line-height);
     background-color: var(--body-bg);
     color: var(--color-text);
+    height: 100%;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
 }

@@ -1,12 +1,14 @@
-// =========================================
-// Mixins
-// =========================================
-// Examples: text-overflow, hover, flex, flexbox, flex-center, flex-center, theme builder, adaptive
-// =========================================
+// ==========================================================
+//  MIXINS
+// ==========================================================
 
-// =========================================
-// 1. Text Overflow
-// =========================================
+// Dependencies:
+@use "../setting" as *;
+@use "sass:map";
+@use "sass:meta";
+@use "sass:math";
+
+//  Text Overflow
 @mixin text-overflow($lines: 1) {
     overflow: hidden;
 
@@ -19,9 +21,17 @@
         -webkit-box-orient: vertical;
     }
 }
-// =========================================
-// 2. Hover
-// =========================================
+@mixin text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+// Fluid text
+@mixin fluid-text($min-size, $max-size, $min-vw: 360px, $max-vw: map.get($nexa-setting, container-width)) {
+    font-size: clamp($min-size, calc(#{$min-size} + (#{$max-size - $min-size}) * ((100vw - #{$min-vw}) / #{$max-vw - $min-vw})), $max-size);
+}
+
+// Hover
 @mixin hover {
     @media (hover: hover) and (pointer: fine) {
         &:hover {
@@ -35,132 +45,199 @@
         }
     }
 }
-// =========================================
-// 3. Flex
-// =========================================
-
 // Flex
-@mixin flex($flex-options: ()) {
+@mixin flex($flex-align: center, $flex-justify: flex-start, $flex-gap: null, $flex-direction: row, $flex-wrap: nowrap) {
     display: flex;
-    flex-direction: map-get($flex-options, direction);
+    align-items: $flex-align;
+    justify-content: $flex-justify;
+    flex-direction: $flex-direction;
+    flex-wrap: $flex-wrap;
 
-    @if map-has-key($flex-options, justify) {
-        justify-content: map-get($flex-options, justify);
-    }
-
-    @if map-has-key($flex-options, align) {
-        align-items: map-get($flex-options, align);
-    }
-
-    @if map-has-key($flex-options, wrap) {
-        flex-wrap: map-get($flex-options, wrap);
-    }
-
-    @if map-has-key($flex-options, gap) {
-        gap: map-get($flex-options, gap);
+    @if $flex-gap != null {
+        gap: $flex-gap;
     }
 }
 
-// Flexbox
-@mixin flexbox($flexbox-align, $flexbox-justify, $flexbox-gap) {
-    display: flex;
-    align-items: $flexbox-align;
-    justify-content: $flexbox-justify;
-    gap: $flexbox-gap;
-}
-
-// Flex-center
+// Flex center
 @mixin flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-// Flex-column
-@mixin flex-column($flex-column-gap) {
-    display: flex;
-    flex-direction: column;
-    gap: $flex-column-gap;
+// Flex column
+@mixin flex-column($flex-gap: null, $flex-align: stretch, $flex-justify: flex-start, $flex-wrap: nowrap) {
+    @include flex($flex-align, $flex-justify, $flex-gap, column, $flex-wrap);
 }
 
-// =========================================
-// 3. Theme builder
-// =========================================
-@mixin theme($theme, $scheme) {
-    @each $var, $value in map-get(map-get($schemes, $scheme), $theme) {
-        #{$var}: #{$value};
+// Grid
+@mixin grid($grid-cols: 12, $grid-gap: 20px) {
+    display: grid;
+    grid-template-columns: repeat($grid-cols, 1fr);
+    gap: $grid-gap;
+}
+
+// Containers
+@mixin container($container-width, $container-offset) {
+    width: 100%;
+    max-width: $container-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $container-offset;
+    padding-right: $container-offset;
+}
+
+// Adaptive
+@function adaptive-bp($name) {
+    $v: map.get($nexa-breakpoints, $name);
+    @if $v == null {
+        @error 'Unknown breakpoint `#{$name}` in $nexa-breakpoints.';
+    }
+    @return $v;
+}
+
+@mixin adaptive-down($name) {
+    @media (max-width: #{adaptive-bp($name)}) {
+        @content;
     }
 }
-// =========================================
-// 4. Adaptive
-// =========================================
+
+@mixin adaptive-up($name) {
+    @media (min-width: #{adaptive-bp($name) + 1px}) {
+        @content;
+    }
+}
+
+@mixin adaptive-between($from, $to) {
+    @media (min-width: #{adaptive-bp($from) + 1px}) and (max-width: #{adaptive-bp($to)}) {
+        @content;
+    }
+}
+
+@function to-length($v) {
+    @return if(meta.type-of($v) == "number" and math.is-unitless($v), $v * 1px, $v);
+}
+
+@mixin adaptive($bp) {
+    $val: if(meta.type-of($bp) == "string", adaptive-bp($bp), $bp);
+    $val: to-length($val);
+    @media (max-width: $val) {
+        @content;
+    }
+}
+
+@mixin adaptive-above($bp) {
+    $val: if(meta.type-of($bp) == "string", adaptive-bp($bp), $bp);
+    $val: to-length($val);
+    $num: math.div($val, 1px);
+    @media (min-width: #{$num + 1}px) {
+        @content;
+    }
+}
+
 @mixin sm {
-    @media (max-width: #{map-get($media-breakpoints, sm)}) {
+    @include adaptive-down(sm) {
         @content;
     }
 }
 
 @mixin sm-above {
-    @media (min-width: #{map-get($media-breakpoints, sm) + 1}) {
+    @include adaptive-up(sm) {
         @content;
     }
 }
 
 @mixin md {
-    @media (max-width: #{map-get($media-breakpoints, md)}) {
+    @include adaptive-down(md) {
         @content;
     }
 }
 
 @mixin md-above {
-    @media (min-width: #{map-get($media-breakpoints, md) + 1}) {
+    @include adaptive-up(md) {
         @content;
     }
 }
 
 @mixin lg {
-    @media (max-width: #{map-get($media-breakpoints, lg)}) {
+    @include adaptive-down(lg) {
         @content;
     }
 }
 
 @mixin lg-above {
-    @media (min-width: #{map-get($media-breakpoints, lg) + 1}) {
+    @include adaptive-up(lg) {
         @content;
     }
 }
 
 @mixin xl {
-    @media (max-width: #{map-get($media-breakpoints, xl)}) {
+    @include adaptive-down(xl) {
         @content;
     }
 }
 
 @mixin xl-above {
-    @media (min-width: #{map-get($media-breakpoints, xl) + 1}) {
+    @include adaptive-up(xl) {
         @content;
     }
 }
 
 @mixin xxl {
-    @media (max-width: #{map-get($media-breakpoints, xxl)}) {
+    @include adaptive-down(xxl) {
         @content;
     }
 }
-
 @mixin xxl-above {
-    @media (min-width: #{map-get($media-breakpoints, xxl) + 1}) {
-        @content;
-    }
-}
-@mixin adaptive($breakpoint) {
-    @media (max-width: $breakpoint) {
+    @include adaptive-up(xxl) {
         @content;
     }
 }
 
-@mixin adaptive-above($breakpoint) {
-    @media (min-width: calc($breakpoint + 1px)) {
-        @content;
+// Positions
+@mixin position($pos: absolute, $t: null, $r: null, $b: null, $l: null) {
+    position: $pos;
+    @if $t != null {
+        top: $t;
+    }
+    @if $r != null {
+        right: $r;
+    }
+    @if $b != null {
+        bottom: $b;
+    }
+    @if $l != null {
+        left: $l;
+    }
+}
+// Position center
+@mixin position-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// Figure
+@mixin square($square-size, $square-radius: null) {
+    width: $square-size;
+    height: $square-size;
+
+    @if $square-radius != null {
+        border-radius: $square-radius;
+    }
+}
+@mixin circle($circle-size) {
+    width: $circle-size;
+    height: $circle-size;
+    border-radius: 50%;
+}
+
+// Cover
+@mixin cover {
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }

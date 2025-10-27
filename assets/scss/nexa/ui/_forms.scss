@@ -1,183 +1,224 @@
-// -----------------------------------------
-// Forms
-// -----------------------------------------
-$forms-border-radius: true;
-$form-sizes: (
-    "default": (
-        $size-default,
-        14px,
-        400,
-        24px,
-        12px,
-        10px,
-    ),
-    "sm": (
-        $size-sm,
-        12px,
-        400,
-        20px,
-        10px,
-        8px,
-    ),
-    "md": (
-        $size-md,
-        14px,
-        400,
-        26px,
-        12px,
-        10px,
-    ),
-    "lg": (
-        $size-lg,
-        15px,
-        400,
-        28px,
-        14px,
-        14px,
-    ),
-);
+// ==========================================================
+//  FORMS
+// ==========================================================
 
-// Основные цвета
-$form-border-color: #ccc;
-$form-border-color-hover: #999;
-$form-border-color-focus: $color-primary;
-$form-border-color-error: #dc3545;
-$form-border-color-disabled: #e0e0e0;
-$form-bg-disabled: #f8f8f8;
+//  Dependencies:
+@use "../setting" as *;
+@use "../main/themes" as *;
+@use "../main/mixins" as *;
+@use "sass:map";
 
-// Миксин для размеров
-@mixin form-size($size) {
-    @if map-has-key($form-sizes, $size) {
-        $values: map-get($form-sizes, $size);
-        height: nth($values, 1);
-        font-size: nth($values, 2);
-        font-weight: nth($values, 3);
-        line-height: nth($values, 4);
-        padding: 0 nth($values, 5);
-        border-radius: if($forms-border-radius, nth($values, 6), 0);
+// Form
+@mixin form {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid var(--form-border-color);
+    font-family: map.get($nexa-setting, font-form);
+    color: var(--color-text, #000);
+    background-color: var(--form-bg);
+    outline: none;
+    transition: map.get($nexa-transition, form);
+    &:not(:disabled):hover {
+        border-color: var(--form-border-color-hover);
+    }
+    &:not(:disabled):focus {
+        border-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary, #2563eb) 20%, transparent);
+        outline: none;
+    }
+    &:disabled {
+        background-color: var(--form-bg-disabled);
+        user-select: none;
     }
 }
-
-// Основной миксин
-@mixin form-input {
-    display: block;
-    width: 100%;
-    min-width: 150px;
-    border: 1px solid $form-border-color;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-    font-family: $font-primary;
-    @include form-size("default");
-
-    &:hover {
-        border-color: $form-border-color-hover;
-    }
-
-    &:focus {
-        border-color: $form-border-color-focus;
-        box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
-    }
-
-    &:disabled {
-        border-color: $form-border-color-disabled;
-        background-color: $form-bg-disabled;
-        cursor: not-allowed;
-    }
-
-    &.error {
-        border-color: $form-border-color-error;
-        &::placeholder {
-            color: $form-border-color-error;
-        }
-        &:focus {
-            border-color: $form-border-color-error;
-            box-shadow: 0 0 4px rgb(255 0 0 / 30%);
-        }
-    }
-
-    @each $size, $values in $form-sizes {
-        &.form-input-#{$size} {
-            @include form-size($size);
-        }
-        &.form-select-#{$size} {
-            @include form-size($size);
-        }
+@each $name, $props in $nexa-forms {
+    $suffix: if($name == default, "", "-#{$name}");
+    .form-input#{$suffix},
+    .form-select#{$suffix},
+    .form-textarea#{$suffix} {
+        font-size: map.get($props, font-size);
+        border-radius: map.get($props, border-radius);
+        height: map.get($props, height);
+        padding-inline: map.get($props, padding-inline);
+        @include form;
     }
 }
 // Form-select
-.form-input,
-.form-select {
-    @include form-input;
-}
-.form-select {
+.form-select,
+.form-select-sm,
+.form-select-md,
+.form-select-lg {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='19' height='19' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e")
-        no-repeat right 6px center;
-    background-size: 16px;
+    position: relative;
+    background-image: var(--form-select-icon);
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    &::-ms-expand {
+        display: none;
+    }
 }
-// Form-textarea
+.form-label {
+    display: inline-flex;
+    gap: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    sup {
+        color: var(--color-danger);
+    }
+}
+.form-text {
+    display: inline-flex;
+    color: var(--form-text);
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+// Form textarea
 .form-textarea {
-    width: 100%;
-    min-height: 100px;
-    padding: 10px;
-    font-size: 14px;
-    border-radius: if($forms-border-radius, 10px, 0);
-    border: 1px solid $form-border-color;
-    transition: 0.2s;
-    &:hover {
-        border-color: $form-border-color-hover;
-    }
-
-    &:focus {
-        border-color: $form-border-color-focus;
-        box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
-    }
-
+    --textarea-border-radius: 15px;
+    --textarea-padding: 10px 15px;
+    --textarea-font-size: 0.9rem;
+    --textarea-min-height: 90px;
+    @include form;
+    font-size: var(--textarea-font-size);
+    padding: var(--textarea-padding);
+    min-height: var(--textarea-min-height);
+    border-radius: if(map.get($nexa-setting, rounded-elements) == true, var(--textarea-border-radius), 0);
     &:disabled {
-        border-color: $form-border-color-disabled;
-        background-color: $form-bg-disabled;
-        cursor: not-allowed;
-    }
-    &-auto {
+        user-select: none;
         resize: none;
     }
-    &.error,
-    &:invalid {
-        border-color: $form-border-color-error;
-        &::placeholder {
-            color: $form-border-color-error;
-        }
-        &:focus {
-            border-color: $form-border-color-error;
-            box-shadow: 0 0 4px rgb(255 0 0 / 30%);
-        }
-    }
 }
-// Forms
-.form {
-    position: relative;
+
+// Form checkbox
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
     &-label {
-        display: block;
-        padding: 0 0 8px 5px;
-        font-size: 15px;
-        color: #272727;
-        &-required {
-            vertical-align: baseline;
-            &::before {
-                content: "*";
-                color: $color-red;
+        font-size: 0.95rem;
+        color: #111;
+        cursor: pointer;
+    }
+    &-input {
+        --form-check-border-color: var(--form-border-color);
+        --form-check-bg: var(--form-bg);
+        --form-check-size: 20px;
+        --form-check-border-radius: 6px;
+        --form-check-color-checked: var(--color-primary);
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: var(--form-check-size);
+        height: var(--form-check-size);
+        border: 1px solid var(--form-check-border-color);
+        border-radius: var(--form-check-border-radius);
+        background-color: var(--form-check-bg);
+        transition: map.get($nexa-setting, transition-form);
+        cursor: pointer;
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 75%;
+        outline: none;
+        &:not(:disabled):hover {
+            border-color: var(--form-border-color-hover);
+        }
+        &:focus,
+        &:focus-visible {
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
+            border-color: var(--form-check-color-checked);
+        }
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        &[type="checkbox"] {
+            border-radius: 6px;
+            &:checked {
+                background-color: var(--form-check-color-checked);
+                border-color: var(--form-check-color-checked);
+                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><polyline points='4 11 8 15 16 6' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+            }
+        }
+        &[type="radio"] {
+            border-radius: 50%;
+            &:checked {
+                background-color: var(--form-check-color-checked);
+                border-color: var(--form-check-color-checked);
+                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><circle cx='10' cy='10' r='5' fill='%23fff'/></svg>");
+                background-position: center;
             }
         }
     }
-    &-footer {
-        display: flex;
-        padding: 0 5px;
+}
+
+// Switch
+.form-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    .form-switch-input {
+        --form-switch-width: 40px;
+        --form-switch-height: 22px;
+        --form-switch-bg: var(--form-swither-bg);
+        --form-switch-border-radius: 50px;
+        --form-switch-dot-width: 16px;
+        --form-switch-dot-height: 16px;
+        --form-switch-dot-bg: var(--form-swither-dot-bg);
+        --form-switch-cheched-bg: var(--color-primary);
+        --form-swith-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        position: relative;
+        width: var(--form-switch-width);
+        height: var(--form-switch-height);
+        appearance: none;
+        background-color: var(--form-switch-bg);
+        border-radius: var(--form-switch-border-radius);
+        outline: none;
+        cursor: pointer;
+        transition: background-color map.get($nexa-setting, transition-form), map.get($nexa-setting, transition-form);
+        &::before {
+            content: "";
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: var(--form-switch-dot-width);
+            height: var(--form-switch-dot-height);
+            background-color: var(--form-switch-dot-bg);
+            border-radius: 50%;
+            transition: transform map.get($nexa-setting, transition-form), background-color map.get($nexa-setting, transition-form);
+            box-shadow: var(--form-swith-shadow);
+        }
+
+        &:checked {
+            background-color: var(--form-switch-cheched-bg);
+
+            &::before {
+                transform: translateX(18px);
+                background-color: #fff;
+            }
+        }
+        &:focus {
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
+        }
+        &:focus-visible {
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
     }
-    &-error {
-        color: $color-red;
-        font-size: 13px;
-        padding: 5px;
+
+    .form-switch-label {
+        font-size: 0.95rem;
+        cursor: pointer;
+        user-select: none;
     }
 }

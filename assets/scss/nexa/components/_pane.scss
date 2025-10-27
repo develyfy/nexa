@@ -1,97 +1,94 @@
-// -----------------------------------------
-// Pane
-// -----------------------------------------
+// ==========================================================
+//  PANE
+// ==========================================================
 
-$pane-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-// Pane start
-.panestart {
-    &-content {
-        --pane-start-width: 250px;
+//  Dependencies:
+@use "../setting" as *;
+@use "../main/themes" as *;
+@use "../main/mixins" as *;
+@use "sass:map";
+
+// Pane
+$pane-positions: (
+    start: (
+        side: left,
+        transform: translateX(-100%),
+    ),
+    end: (
+        side: right,
+        transform: translateX(100%),
+    ),
+    up: (
+        side: top,
+        transform: translateY(-100%),
+    ),
+    down: (
+        side: bottom,
+        transform: translateY(100%),
+    ),
+);
+
+@each $name, $data in $pane-positions {
+    .pane#{$name} {
         position: fixed;
         top: 0;
         left: 0;
-        visibility: hidden;
-        opacity: 0;
         width: 100%;
-        max-width: var(--pane-start-width);
-        height: 100vh;
-        background-color: var(--options-bg);
-        transform: translateX(-100%);
-        transition: $pane-transition;
-        z-index: $z-index-4;
-        &.show {
-            visibility: visible;
+        height: 100%;
+        background: rgba(0, 0, 0, 0);
+        visibility: hidden;
+        transition: map.get($nexa-transition, backdrop);
+        z-index: map.get($nexa-z-index, 3);
+        &.open {
+            background: var(--backdrop-bg);
             opacity: 1;
-            transform: translateX(0);
+            visibility: visible;
+        }
+        &-content {
+            --pane-size: 250px;
+            position: fixed;
+            #{map.get($data, side)}: 0;
+            top: if($name == down, auto, 0);
+            bottom: if($name == down, 0, auto);
+            visibility: hidden;
+            opacity: 0;
+            width: if($name == up or $name == down, 100%, 100%);
+            max-width: if($name == start or $name == end, var(--pane-size), none);
+            height: if($name == up or $name == down, var(--pane-size), 100vh);
+            background-color: var(--pane-bg);
+            transform: map.get($data, transform);
+            transition: map.get($nexa-transition, pane);
+            z-index: map.get($nexa-z-index, 3);
+            &.show {
+                visibility: visible;
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+            @include adaptive(300px) {
+                --pane-size: 100%;
+            }
         }
     }
 }
-
-// Pane end
-.paneend {
-    &-content {
-        --pane-start-width: 250px;
-        position: fixed;
-        top: 0;
-        right: 0;
-        visibility: hidden;
-        opacity: 0;
-        width: 100%;
-        max-width: var(--pane-start-width);
-        height: 100vh;
-        background-color: var(--options-bg);
-        transform: translateX(100%);
-        transition: $pane-transition;
-        z-index: $z-index-4;
-        &.show {
-            visibility: visible;
+.pane {
+    &-close {
+        --pane-close-size: 22px;
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: var(--pane-close-size);
+        height: var(--pane-close-size);
+        background-color: var(--pane-close-icon);
+        mask: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 1024 1024'%3e%3ctitle%3eClose-outlined SVG Icon%3c/title%3e%3cpath fill='black' fill-rule='evenodd' d='M799.855 166.312c.023.007.043.018.084.059l57.69 57.69c.041.041.052.06.059.084a.118.118 0 0 1 0 .069c-.007.023-.018.042-.059.083L569.926 512l287.703 287.703c.041.04.052.06.059.083a.118.118 0 0 1 0 .07c-.007.022-.018.042-.059.083l-57.69 57.69c-.041.041-.06.052-.084.059a.118.118 0 0 1-.069 0c-.023-.007-.042-.018-.083-.059L512 569.926L224.297 857.629c-.04.041-.06.052-.083.059a.118.118 0 0 1-.07 0c-.022-.007-.042-.018-.083-.059l-57.69-57.69c-.041-.041-.052-.06-.059-.084a.118.118 0 0 1 0-.069c.007-.023.018-.042.059-.083L454.073 512L166.371 224.297c-.041-.04-.052-.06-.059-.083a.118.118 0 0 1 0-.07c.007-.022.018-.042.059-.083l57.69-57.69c.041-.041.06-.052.084-.059a.118.118 0 0 1 .069 0c.023.007.042.018.083.059L512 454.073l287.703-287.702c.04-.041.06-.052.083-.059a.118.118 0 0 1 .07 0Z'/%3e%3c/svg%3e")
+            no-repeat center / contain;
+        -webkit-mask: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 1024 1024'%3e%3ctitle%3eClose-outlined SVG Icon%3c/title%3e%3cpath fill='black' fill-rule='evenodd' d='M799.855 166.312c.023.007.043.018.084.059l57.69 57.69c.041.041.052.06.059.084a.118.118 0 0 1 0 .069c-.007.023-.018.042-.059.083L569.926 512l287.703 287.703c.041.04.052.06.059.083a.118.118 0 0 1 0 .07c-.007.022-.018.042-.059.083l-57.69 57.69c-.041.041-.06.052-.084.059a.118.118 0 0 1-.069 0c-.023-.007-.042-.018-.083-.059L512 569.926L224.297 857.629c-.04.041-.06.052-.083.059a.118.118 0 0 1-.07 0c-.022-.007-.042-.018-.083-.059l-57.69-57.69c-.041-.041-.052-.06-.059-.084a.118.118 0 0 1 0-.069c.007-.023.018-.042.059-.083L454.073 512L166.371 224.297c-.041-.04-.052-.06-.059-.083a.118.118 0 0 1 0-.07c.007-.022.018-.042.059-.083l57.69-57.69c.041-.041.06-.052.084-.059a.118.118 0 0 1 .069 0c.023.007.042.018.083.059L512 454.073l287.703-287.702c.04-.041.06-.052.083-.059a.118.118 0 0 1 .07 0Z'/%3e%3c/svg%3e")
+            no-repeat center / contain;
+        opacity: 0.6;
+        transition: 0.2s;
+        opacity: map.get($nexa-transition, button);
+        &:hover {
             opacity: 1;
-            transform: translateX(0);
-        }
-    }
-}
-
-// Pane up
-.paneup {
-    &-content {
-        --pane-start-height: 250px;
-        position: fixed;
-        top: 0;
-        right: 0;
-        visibility: hidden;
-        opacity: 0;
-        width: 100%;
-        height: var(--pane-start-height);
-        background-color: var(--options-bg);
-        transform: translateY(-100%);
-        transition: $pane-transition;
-        z-index: $z-index-4;
-        &.show {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-}
-// Pane down
-.panedown {
-    &-content {
-        --pane-start-height: 250px;
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        visibility: hidden;
-        opacity: 0;
-        width: 100%;
-        height: var(--pane-start-height);
-        background-color: var(--options-bg);
-        transform: translateY(100%);
-        transition: $pane-transition;
-        z-index: $z-index-4;
-        &.show {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0);
         }
     }
 }

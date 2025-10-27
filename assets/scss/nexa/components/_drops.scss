@@ -1,7 +1,15 @@
-// -----------------------------------------
-// Drops
-// -----------------------------------------
+// ==========================================================
+//  DROPS
+// ==========================================================
 
+//  Dependencies:
+@use "../setting" as *;
+@use "../main/themes" as *;
+@use "../main/mixins" as *;
+@use "sass:map";
+@use "sass:color";
+
+// Drops
 .dropdown,
 .dropup,
 .dropstart,
@@ -89,91 +97,82 @@
         --drop-border-radius: 10px;
         --drop-padding: 5px;
         --drop-min-width: 100px;
-
+        --drop-background: #fff;
+        --drop-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
         min-width: var(--drop-min-width);
         width: var(--drop-width);
         margin: var(--drop-offset);
         border-radius: var(--drop-border-radius);
         transform: var(--drop-transform);
         padding: var(--drop-padding);
-        background-color: #fff;
-        box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
-        z-index: 1000;
+        background-color: var(--drop-background);
+        box-shadow: var(--drop-shadow);
+        z-index: map.get($nexa-z-index, 2);
     }
 }
-$drop-sizes: (
-    "sm": (
-        120px,
-        5px,
-        10px,
-    ),
-    "md": (
-        150px,
-        6px,
-        11px,
-    ),
-    "lg": (
-        200px,
-        7px,
-        12px,
-    ),
-);
-@each $size, $values in $drop-sizes {
-    .drop-content-#{$size} {
-        --drop-width: #{nth($values, 1)};
-        --drop-padding: #{nth($values, 2)};
-        --drop-border-radius: #{nth($values, 3)};
+@if map.has-key($nexa-drops, default) {
+    $base: map.get($nexa-drops, default);
+
+    .drop-content {
+        --drop-width: #{map.get($base, width)};
+        --drop-padding: #{map.get($base, padding)};
+        --drop-border-radius: #{map.get($base, border-radius)};
+    }
+}
+
+@each $name, $cfg in $nexa-drops {
+    @if $name != default {
+        .drop-content-#{$name} {
+            --drop-width: #{map.get($cfg, width)};
+            --drop-padding: #{map.get($cfg, padding)};
+            --drop-border-radius: #{map.get($cfg, border-radius)};
+        }
     }
 }
 // Dropmenu
 .dropmenu {
     list-style: none;
-    @include flex(
-        (
-            direction: column,
-            gap: 3px,
-        )
-    );
+    @include flex-column(3px);
     &-item {
         a,
         button {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 5px 12px;
-            transition: 0.2s;
-            border-radius: 6px;
+            --dropitem-padding: 5px 12px;
+            --dropitem-border-radius: 6px;
+            @include flex(center, start, 8px, row);
+            width: 100%;
+            padding: var(--dropitem-padding);
+            border-radius: var(--dropitem-border-radius);
             white-space: nowrap;
             cursor: pointer;
-            width: 100%;
+            transition: 0.2s;
             &:hover {
-                background-color: lighten($color-dark, 97%);
+                background-color: color.scale(map.get($nexa-colors, dark), $lightness: 97%);
             }
             &:focus,
             &:active {
-                color: $color-dark;
-                background: lighten($color-dark, 94%);
+                color: var(--color-dark);
+                background: color.scale(map.get($nexa-colors, dark), $lightness: 94%);
             }
             &.active {
-                color: $color-primary;
-                background: lighten($color-primary, 40%);
+                color: var(--color-primary);
+                background: color.scale(map.get($nexa-colors, primary), $lightness: 88%);
                 &:hover {
-                    background: lighten($color-primary, 38%);
+                    background: color.scale(map.get($nexa-colors, primary), $lightness: 82%);
                 }
             }
             &.danger {
-                color: $color-red;
+                color: var(--color-danger);
                 &:hover {
-                    background: lighten($color-red, 39%);
+                    background: color.scale(map.get($nexa-colors, danger), $lightness: 89%);
                 }
                 &:active,
                 &:focus {
-                    background: lighten($color-red, 38%);
+                    background: color.scale(map.get($nexa-colors, danger), $lightness: 90%);
                 }
             }
             &:disabled,
             &.disabled {
-                color: lighten($color-dark, 60%);
+                color: color.scale(map.get($nexa-colors, dark), $lightness: 60%);
                 pointer-events: none;
             }
         }
@@ -183,10 +182,10 @@ $drop-sizes: (
         padding: 0;
         height: 0;
         border: none;
-        border-top: 1px solid lighten($color-dark, 94%);
+        border-top: 1px solid color.scale(map.get($nexa-colors, dark), $lightness: 94%);
     }
     &-header {
-        font-family: var(--font-title);
+        font-family: map.get($nexa-setting, font-title);
         padding: 5px 12px;
         font-weight: 600;
         font-size: 14px;

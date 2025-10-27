@@ -1,85 +1,165 @@
-// -----------------------------------------
-// Normalize style
-// -----------------------------------------
+// ==========================================================
+//  NORMALIZE
+// ==========================================================
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-    outline: none !important;
 }
-:where(ul, ol):where([class]) {
-    padding-left: 0;
-}
-:where(blockquote, figure):where([class]) {
-    margin: 0;
-}
-:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
-    margin-block: 0;
-}
-:where(dd[class]) {
-    margin-left: 0;
-}
-:where(fieldset[class]) {
-    margin-left: 0;
-    padding: 0;
-    border: none;
-}
-:where(ul[class]) {
-    list-style: none;
-}
-p {
-    --paragraphMarginBottom: 24px;
-    margin-block: 0;
-    &:where(:not([class]):not(:last-child)) {
-        margin-bottom: var(--paragraphMarginBottom);
-    }
-}
-img {
-    display: block;
-    max-width: 100%;
-}
-input,
-textarea,
-select,
-button {
-    font: inherit;
-}
+
 html {
     height: 100%;
     scroll-behavior: smooth;
 }
 
+ul,
+ol,
+dl,
+blockquote,
+figure {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    --paragraphMarginBottom: 24px;
+    &:where(:not([class]):not(:last-child)) {
+        margin-bottom: var(--paragraphMarginBottom);
+    }
+}
+
+:where(ul, ol):where([class]) {
+    padding-left: 0;
+}
+
+:where(ul[class]) {
+    list-style: none;
+}
+
+:where(blockquote, figure):where([class]) {
+    margin: 0;
+}
+
+:where(dd[class]) {
+    margin-left: 0;
+}
+
+:where(fieldset[class]) {
+    margin-left: 0;
+    padding: 0;
+    border: 0;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+    display: block;
+    max-width: 100%;
+}
+
+img,
+video {
+    height: auto;
+}
+
 a {
     color: inherit;
-    &,
-    &:hover {
+    text-decoration-skip-ink: auto;
+    &:link,
+    &:visited {
         text-decoration: none;
     }
 }
-button {
-    padding: 0;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
-// Title setting
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin-block: 0;
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
 }
 
-// Svg setting
-// svg *[fill] {
-//     fill: currentColor;
-// }
-// svg *[stroke] {
-//     stroke: currentColor;
-// }
-body {
+button {
     padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+:where(summary) {
+    cursor: pointer;
+}
+
+:where(:focus-visible) {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+:where(:focus:not(:focus-visible)) {
+    outline: none;
+}
+
+::placeholder {
+    color: currentColor;
+    opacity: 0.6;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
     margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+hr {
+    height: 0;
+    border: 0;
+    border-top: 1px solid currentColor;
+    opacity: 0.2;
+    margin: 0;
+}
+
+svg *[fill] {
+    fill: currentColor;
+}
+svg *[stroke] {
+    stroke: currentColor;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+dialog {
+    border: 0;
+    padding: 0;
+    max-width: min(90vw, 64rem);
+    margin: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
 }

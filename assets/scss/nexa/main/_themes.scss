@@ -1,44 +1,80 @@
-// Theme setting
-$default-theme: light !default;
-$default-scheme: default !default;
-$auto-theme: true !default;
-$data-theme-dark: true !default;
+// ==========================================================
+//  THEMES
+// ==========================================================
 
+//  Dependencies:
+
+@use "../setting" as *;
+@use "mixins" as *;
+@use "sass:map";
+
+@mixin theme($scheme, $theme) {
+    $scheme-map: map.get($schemes, $scheme);
+    @if $scheme-map == null {
+        @error "Unknown scheme `#{$scheme}`. Available: #{map.keys($schemes)}";
+    }
+
+    $theme-map: map.get($scheme-map, $theme);
+    @if $theme-map == null {
+        @error "Unknown theme `#{$theme}` for scheme `#{$scheme}`. Available: #{map.keys($scheme-map)}";
+    }
+
+    @each $var, $value in $theme-map {
+        #{$var}: #{$value};
+    }
+}
+// Generate colors
+$color-vars: ();
+
+@each $name, $value in $nexa-colors {
+    $var-name: "--color-#{$name}";
+    $color-vars: map.merge(
+        $color-vars,
+        (
+            $var-name: $value,
+        )
+    );
+}
+// Colors
 $schemes: (
     default: (
-        light: (
-            --body-bg: #fff,
-            --color-text: #000000,
-            --color-title: #0e0e0e,
-            --color-primary: $color-primary,
-            --color-dark: $color-dark,
-            --color-white: $color-white,
-            --color-light-gray: $color-light-gray,
-            --color-secondary: $color-secondary,
-            --color-green: $color-green,
-            --color-red: $color-red,
-            --color-orange: $color-orange,
-            --options-bg: #fff,
-            --border-color: $color-light-gray,
-            --light-icon-color: #353535,
-        ),
+        light:
+            map.merge(
+                (
+                    --body-bg: #fff,
+                    --color-text: #000000,
+                    --form-bg: #fff,
+                    --form-bg-disabled: #f7f7f7,
+                    --form-border-color: #ccc,
+                    --form-border-color-hover: #999,
+                    --form-border-color-focus: var(--color-primary),
+                    --form-text: #212529bf,
+                    --form-swither-bg: #dddddd,
+                    --form-swither-dot-bg: #fff,
+                    --form-select-icon:
+                        url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"),
+                    --modal-bg: #fff,
+                    --modal-close-icon: #000,
+                    --modal-border-color: #eee,
+                    --pane-bg: #fff,
+                    --pane-close-icon: #000,
+                    --backdrop-bg: rgba(0, 0, 0, 0.5),
+                ),
+                $color-vars
+            ),
         dark: (
             --body-bg: #000,
             --color-text: #ffffff,
-            --color-title: #eee,
-            --options-bg: #161616,
-            --border-color: #333333,
-            --light-icon-color: #cbcbcb,
         ),
     ),
-    blue: (
-        light: (
-            --bg-color: #e3f2fd,
-            --text-color: #0d47a1,
-        ),
-        dark: (
-            --bg-color: #0d47a1,
-            --text-color: #bbdefb,
-        ),
-    ),
+    // blue: (
+    //     light: (
+    //         --body-bg: #002fff,
+    //         --color-text: #ffffff,
+    //     ),
+    //     dark: (
+    //         --body-bg: #000f52,
+    //         --color-text: #ffffff,
+    //     ),
+    // ),
 );

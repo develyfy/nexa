@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Nexa</title>
+        <link rel="stylesheet" href="/assets/css/nexa.min.css" />
+    </head>
+    <body>
+        <aside class="p-fixed top-5 left-5">
+            <ul class="flex-column gap-3">
+                <li>
+                    <a href="#components">Компоненты</a>
+                    <ul class="flex-column gap-2 ms-3 mt-2">
+                        <li>
+                            <a href="#accordion">Accordion</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a href="#button">Кнопки</a></li>
+                <li>
+                    <a href="#forms">Формы</a>
+                    <ul class="flex-column gap-2 ms-3 mt-2">
+                        <li>
+                            <a href="#form-input">input</a>
+                        </li>
+                        <li><a href="#form-radio">radio</a></li>
+                        <li><a href="#form-switcher">switcher</a></li>
+                        <li><a href="#form-checbox">checbox</a></li>
+                        <li><a href="#form-select">select</a></li>
+                        <li><a href="#form-textarea">textarea</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <div class="container flex-column gap-3 py-5 my-5" id="components">
+            <h1>Компоненты</h1>
+
+            <div class="mt-5 flex-column gap-3">
+                <span data-date="Y"></span>
+                <!-- 2025 -->
+                <span data-date="y"></span>
+                <!-- 25 -->
+                <span data-date="d.m.Y"></span>
+                <!-- 27.10.2025 -->
+                <span data-date="Y-m-d"></span>
+                <!-- 2025-10-27 -->
+                <span data-date="l, d F Y"></span>
+                <!-- Понедельник, 27 октября 2025 -->
+                <span data-date="H:i:s"></span>
+                <!-- 22:53:09 -->
+                <span data-date="Y-m-d H:i"></span>
+                <!-- 2025-10-27 22:53 -->
+                <span data-date="datetime"></span>
+                <!-- 27.10.2025, 22:53:09 -->
+            </div>
+
+            <div class="flex-column gap-3 mt-3" id="accordion">
+                <h2>Accordion</h2>
+                <h6>Зависимые</h6>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-toggle">Item 1</button>
+                        <div class="accordion-content">
+                            <p>Content for item 1</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle">Item 2</button>
+                        <div class="accordion-content">
+                            <p>Content for item 2</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle">Item 3</button>
+                        <div class="accordion-content">
+                            <p>Content for item 3</p>
+                        </div>
+                    </div>
+                </div>
+                <h6>Независимые</h6>
+                <div class="accordion" data-accordion="slide">
+                    <div class="accordion-item">
+                        <button class="accordion-toggle">Item 1</button>
+                        <div class="accordion-content">
+                            <p>Content for item 1</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle">Item 2</button>
+                        <div class="accordion-content">
+                            <p>Content for item 2</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle">Item 3</button>
+                        <div class="accordion-content">
+                            <p>Content for item 3</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h6>Комбинированный</h6>
+                <div class="accordion">
+                    <div class="accordion-item" data-accordion-open="true">
+                        <button class="accordion-toggle">Item 1</button>
+                        <div class="accordion-content">
+                            <p>Content for item 1</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle">Item 2</button>
+                        <div class="accordion-content">
+                            <p>Content for item 2</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle">Item 3</button>
+                        <div class="accordion-content">
+                            <p>Content for item 3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-column gap-3 mt-3" id="drops">
+                <h2>Drops</h2>
+                <div class="grid-2">
+                    <div class="">
+                        <h4 class="mb-3">Dropdown</h4>
+
+                        <p class="mt-20">Dropdown click</p>
+                        <div class="mt-3 d-flex gap-2">
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Default</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Start</button>
+                                <div class="drop-content" data-drop-position="start">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Center</button>
+                                <div class="drop-content" data-drop-position="center">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">End</button>
+                                <div class="drop-content" data-drop-position="end">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3">Dropdown hover</p>
+                        <div class="mt-3 d-flex gap-2">
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Default</button>
+                                <div class="drop-content" data-drop-position="start">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Start</button>
+                                <div class="drop-content" data-drop-position="start">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Center</button>
+                                <div class="drop-content" data-drop-position="center">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">End</button>
+                                <div class="drop-content" data-drop-position="end">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <h4 class="mb-3">Dropup</h4>
+                        <p class="mt-20">Dropup click</p>
+                        <div class="mt-3 d-flex gap-2">
+                            <div class="dropup">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Default</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropup">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Start</button>
+                                <div class="drop-content" data-drop-position="start">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropup">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Center</button>
+                                <div class="drop-content" data-drop-position="center">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropup">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">End</button>
+                                <div class="drop-content" data-drop-position="end">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3">Dropup hover</p>
+                        <div class="mt-3 d-flex gap-2">
+                            <div class="dropup">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Default</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropup">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Start</button>
+                                <div class="drop-content" data-drop-position="start">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropup">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Center</button>
+                                <div class="drop-content" data-drop-position="center">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropup">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">End</button>
+                                <div class="drop-content" data-drop-position="end">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <h4>Dropstart</h4>
+                        <p class="mt-3">Dropstart click</p>
+                        <div class="mt-3 d-flex gap-2">
+                            <div class="dropstart">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Default</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropstart">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Start</button>
+                                <div class="drop-content" data-drop-position="start">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropstart">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Center</button>
+                                <div class="drop-content" data-drop-position="center">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropstart">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">End</button>
+                                <div class="drop-content" data-drop-position="end">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3">Dropstart hover</p>
+                        <div class="mt-3 d-flex gap-2">
+                            <div class="dropstart">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Default</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropstart">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Start</button>
+                                <div class="drop-content" data-drop-position="start">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropstart">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Center</button>
+                                <div class="drop-content" data-drop-position="center">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropstart">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">End</button>
+                                <div class="drop-content" data-drop-position="end">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <h4 class="mt-3">Dropend</h4>
+
+                        <p class="mt-3">Dropend click</p>
+                        <div class="mt-3 d-flex gap-2">
+                            <div class="dropend">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Default</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropend">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Start</button>
+                                <div class="drop-content" data-drop-position="start">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropend">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Center</button>
+                                <div class="drop-content" data-drop-position="center">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropend">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">End</button>
+                                <div class="drop-content" data-drop-position="end">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3">Dropend hover</p>
+                        <div class="mt-3 d-flex gap-2">
+                            <div class="dropend">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Default</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropend">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Start</button>
+                                <div class="drop-content" data-drop-position="start">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropend">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Center</button>
+                                <div class="drop-content" data-drop-position="center">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropend">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">End</button>
+                                <div class="drop-content" data-drop-position="end">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <h4>Размеры</h4>
+                    <div class="mt-3 d-flex gap-2">
+                        <div class="dropdown">
+                            <button class="btn btn-primary drop-toggle" aria-expanded="false">Default</button>
+                            <div class="drop-content">
+                                <ul class="dropmenu">
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-primary drop-toggle" aria-expanded="false">Drop sm</button>
+                            <div class="drop-content drop-content-sm">
+                                <ul class="dropmenu">
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-primary drop-toggle" aria-expanded="false">Drop md</button>
+                            <div class="drop-content drop-content-md">
+                                <ul class="dropmenu">
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-primary drop-toggle" aria-expanded="false">Drop lg</button>
+                            <div class="drop-content drop-content-lg">
+                                <ul class="dropmenu">
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="mt-5">Функциональность</h4>
+                <div class="grid-2">
+                    <div class="">
+                        <h5>Открытие</h5>
+
+                        <div class="mt-3 d-flex gap-3">
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Default</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="click">Click</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="clickonly">Click only</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Hover</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <h5>Задержка при открытии</h5>
+                        <div class="mt-3 d-flex gap-3 flex-wrap">
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false">Default click</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-delay=".3s">.3s click</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-delay="1s">1s click</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="clickonly" data-drop-delay="1s">
+                                    Click only delay
+                                </button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3 d-flex gap-3 flex-wrap">
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover">Default Hover</button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover" data-drop-delay=".3s">
+                                    .3s Hover
+                                </button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary drop-toggle" aria-expanded="false" data-drop-open="hover" data-drop-delay="1s">
+                                    1s Hover
+                                </button>
+                                <div class="drop-content">
+                                    <ul class="dropmenu">
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                        <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2>Меню</h2>
+                <div class="grid">
+                    <div class="col-2">
+                        <div class="p-relative">
+                            <div class="drop-content">
+                                <ul class="dropmenu">
+                                    <li class="dropmenu-item"><a href="#" class="active">Ссылка active</a></li>
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    <li class="dropmenu-item"><a href="#" class="danger">Danger</a></li>
+                                    <li class="dropmenu-item"><a href="#" class="disabled" aria-disabled="true">Disabled link</a></li>
+                                    <li class="dropmenu-item"><button type="button" aria-disabled="true" disabled>Disabled</button></li>
+                                    <hr class="dropmenu-divider" />
+                                    <li class="dropmenu-item">
+                                        <a href="#" class="flex-space-between">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path d="M2.5 2v6h6M21.5 22v-6h-6" />
+                                                <path d="M22 11.5A10 10 0 0 0 3.2 7.2M2 12.5a10 10 0 0 0 18.8 4.2" />
+                                            </svg>
+                                            Ссылка
+                                        </a>
+                                    </li>
+                                    <li class="dropmenu-item">
+                                        <a href="#" class="flex-space-between">
+                                            Ссылка
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path d="M2.5 2v6h6M21.5 22v-6h-6" />
+                                                <path d="M22 11.5A10 10 0 0 0 3.2 7.2M2 12.5a10 10 0 0 0 18.8 4.2" />
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="dropmenu-item">
+                                        <a href="#">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path d="M2.5 2v6h6M21.5 22v-6h-6" />
+                                                <path d="M22 11.5A10 10 0 0 0 3.2 7.2M2 12.5a10 10 0 0 0 18.8 4.2" />
+                                            </svg>
+                                            Ссылка</a
+                                        >
+                                    </li>
+                                    <hr class="dropmenu-divider" />
+                                    <div class="dropmenu-header">Drop header</div>
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                    <li class="dropmenu-item"><a href="#">Ссылка</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-column gap-3 mt-3">
+                <h2>Modals</h2>
+                <div class="grid-2 mt-5">
+                    <div>
+                        <h4>Размеры</h4>
+                        <div class="mt-3 d-flex gap-3">
+                            <button class="btn btn-primary" data-modal-btn="default">Default</button>
+                            <button class="btn btn-primary" data-modal-btn="sm">Sm</button>
+                            <button class="btn btn-primary" data-modal-btn="md">Md</button>
+                            <button class="btn btn-primary" data-modal-btn="lg">Lg</button>
+                            <button class="btn btn-primary" data-modal-btn="full">Full</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Позиционирование</h4>
+                        <div class="mt-3 d-flex gap-3">
+                            <button class="btn btn-primary" data-modal-btn="center">Center</button>
+                            <button class="btn btn-primary" data-modal-btn="start">Start</button>
+                            <button class="btn btn-primary" data-modal-btn="end">End</button>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <h4>Функции</h4>
+                        <div class="mt-3 d-flex gap-3">
+                            <button class="btn btn-primary" data-modal-btn="backdrop">Backdrop close</button>
+                            <button class="btn btn-primary" data-modal-btn="hashtag">Hashtag</button>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <h4>Переполнение</h4>
+                        <div class="mt-3 d-flex gap-3">
+                            <button class="btn btn-primary" data-modal-btn="big">Big content</button>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <h4>Вид</h4>
+                        <div class="mt-3 d-flex gap-3">
+                            <button class="btn btn-primary" data-modal-btn="border">Border</button>
+                            <button class="btn btn-primary" data-modal-btn="footer">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- первое окно -->
+            <div class="modal" data-modal="default">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Модальное окно</h1>
+                        <button type="button" class="modal-close" data-modal-close="default" aria-lable="Modal Close"></button>
+                    </div>
+
+                    <div class="modal-container modal-container-border">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                    </div>
+                    <div class="modal-footer">
+                        <div class="flex gap-1">
+                            <button type="button" data-modal-close="default" class="btn btn-primary">Ок</button>
+                            <button type="button" data-modal-close="default" class="btn btn-outline-primary">Назад</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- первое окно -->
+            <!-- второе окно -->
+            <div class="modal modal-sm" data-modal="sm">
+                <div class="modal-content modal-content-sm">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Модальное окно</h1>
+                        <button type="button" class="modal-close p-absolute top-35 end-20" data-modal-close="sm" aria-lable="Modal Close"></button>
+                    </div>
+
+                    <div class="modal-container">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                    </div>
+                    <div class="modal-footer">
+                        <div class="flex gap-1">
+                            <button class="btn btn-primary" data-modal-close="sm">Ок</button>
+                            <button class="btn btn-outline-primary" data-modal-close="sm">Назад</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- второе окно -->
+            <!-- третье окно -->
+            <div class="modal modal-md" data-modal="md">
+                <div class="modal-content modal-content-md">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Модальное окно</h1>
+                        <button type="button" class="modal-close p-absolute top-35 end-20" data-modal-close="md" aria-lable="Modal Close"></button>
+                    </div>
+
+                    <div class="modal-container">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                    </div>
+                    <div class="modal-footer">
+                        <div class="flex gap-1">
+                            <button class="btn btn-primary" data-modal-close="md">Ок</button>
+                            <button class="btn btn-outline-primary" data-modal-close="md">Назад</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- третье окно -->
+            <!-- четвёртое окно -->
+            <div class="modal modal-lg" data-modal="lg">
+                <div class="modal-content modal-content-lg">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Модальное окно</h1>
+                        <button type="button" class="modal-close p-absolute top-35 end-20" data-modal-close="lg" aria-lable="Modal Close"></button>
+                    </div>
+
+                    <div class="modal-container">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                    </div>
+                    <div class="modal-footer">
+                        <div class="flex gap-1">
+                            <button class="btn btn-primary" data-modal-close="lg">Ок</button>
+                            <button class="btn btn-outline-primary" data-modal-close="lg">Назад</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- четвёртое окно -->
+            <!-- Пятое окно -->
+            <div class="modal modal-full" data-modal="full">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Модальное окно</h1>
+                        <button type="button" class="modal-close p-absolute top-35 end-20" data-modal-close="full" aria-lable="Modal Close"></button>
+                    </div>
+
+                    <div class="modal-container">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                    </div>
+                    <div class="modal-footer">
+                        <div class="flex gap-1">
+                            <button class="btn btn-primary" data-modal-close="full">Ок</button>
+                            <button class="btn btn-outline-primary" data-modal-close="full">Назад</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Пятое окно -->
+
+            <!-- Шестое окно -->
+            <div class="modal" data-modal="center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Модальное окно</h1>
+                        <button
+                            type="button"
+                            class="modal-close p-absolute top-35 end-20"
+                            data-modal-close="center"
+                            aria-lable="Modal Close"
+                        ></button>
+                    </div>
+
+                    <div class="modal-container">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                    </div>
+                    <div class="modal-footer">
+                        <div class="flex gap-1">
+                            <button class="btn btn-primary" data-modal-close="center">Ок</button>
+                            <button class="btn btn-outline-primary" data-modal-close="center">Назад</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Шестое окно -->
+            <!-- Седьмое окно -->
+            <div class="modal modal-start" data-modal="start">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Модальное окно</h1>
+                        <button type="button" class="modal-close p-absolute top-35 end-20" data-modal-close="start" aria-lable="Modal Close"></button>
+                    </div>
+
+                    <div class="modal-container">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                    </div>
+                    <div class="modal-footer">
+                        <div class="flex gap-1">
+                            <button class="btn btn-primary" data-modal-close="start">Ок</button>
+                            <button class="btn btn-outline-primary" data-modal-close="start">Назад</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Седьмое окно -->
+
+            <!-- Восьмое окно -->
+            <div class="modal modal-end" data-modal="end">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Модальное окно</h1>
+                        <button type="button" class="modal-close p-absolute top-5 end-5" data-modal-close="end" aria-lable="Modal Close"></button>
+                    </div>
+
+                    <div class="modal-container">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                    </div>
+                    <div class="modal-footer">
+                        <div class="flex gap-1">
+                            <button class="btn btn-primary" data-modal-close="end">Ок</button>
+                            <button class="btn btn-outline-primary" data-modal-close="end">Назад</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Восьмое окно -->
+
+            <!-- Девятое окно -->
+            <div class="modal" data-modal="backdrop" data-close-backdrop>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Модальное окно</h1>
+                        <button
+                            type="button"
+                            class="modal-close p-absolute top-35 end-20"
+                            data-modal-close="backdrop"
+                            aria-lable="Modal Close"
+                        ></button>
+                    </div>
+
+                    <div class="modal-container">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                    </div>
+                    <div class="modal-footer">
+                        <div class="flex gap-1">
+                            <button class="btn btn-primary" data-modal-close="backdrop">Ок</button>
+                            <button class="btn btn-outline-primary" data-modal-close="backdrop">Назад</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Девятое окно -->
+            <!-- Десятое окно -->
+            <div class="modal" data-modal="hashtag" data-modal-name="window">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Модальное окно</h1>
+                        <button
+                            type="button"
+                            class="modal-close p-absolute top-35 end-20"
+                            data-modal-close="hashtag"
+                            aria-lable="Modal Close"
+                        ></button>
+                    </div>
+
+                    <div class="modal-container">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                    </div>
+                    <div class="modal-footer">
+                        <div class="flex gap-1">
+                            <button class="btn btn-primary" data-modal-close="hashtag">Ок</button>
+                            <button class="btn btn-outline-primary" data-modal-close="hashtag">Назад</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Десятое окно -->
+            <!-- Одинадцатое окно -->
+            <div class="modal" data-modal="big">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Модальное окно</h1>
+                        <button type="button" class="modal-close p-absolute top-35 end-20" data-modal-close="big" aria-lable="Modal Close"></button>
+                    </div>
+
+                    <div class="modal-container">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                        <br /><br />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                        <br /><br />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                        <br /><br />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                        <br /><br />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                        <br /><br />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                        <br /><br />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                        <br /><br />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                        <br /><br />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                        <br /><br />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                    </div>
+                    <div class="modal-footer">
+                        <div class="flex gap-1">
+                            <button class="btn btn-primary" data-modal-close="big">Ок</button>
+                            <button class="btn btn-outline-primary" data-modal-close="big">Назад</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Одинадцатое окно -->
+            <!-- Двенадцатое окно -->
+            <div class="modal" data-modal="border">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Модальное окно</h1>
+                        <button
+                            type="button"
+                            class="modal-close p-absolute top-35 end-20"
+                            data-modal-close="border"
+                            aria-lable="Modal Close"
+                        ></button>
+                    </div>
+
+                    <div class="modal-container modal-container-border">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                    </div>
+                    <div class="modal-footer">
+                        <div class="flex gap-1">
+                            <button class="btn btn-primary" data-modal-close="border">Ок</button>
+                            <button class="btn btn-outline-primary" data-modal-close="border">Назад</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Двенадцатое окно -->
+            <!-- Тринадцатое окно -->
+            <div class="modal" data-modal="footer">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Модальное окно</h1>
+                        <button
+                            type="button"
+                            class="modal-close p-absolute top-35 end-20"
+                            data-modal-close="footer"
+                            aria-lable="Modal Close"
+                        ></button>
+                    </div>
+
+                    <div class="modal-container">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quas rerum sapiente blanditiis perspiciatis, asperiores
+                        delectus, commodi nisi reprehenderit labore ad nesciunt dignissimos. Consequuntur quis ea error, beatae quisquam nam.
+                    </div>
+                    <div class="modal-footer modal-footer-box">
+                        <div class="flex gap-1">
+                            <button class="btn btn-primary" data-modal-close="footer">Ок</button>
+                            <button class="btn btn-outline-primary" data-modal-close="footer">Назад</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-column gap-3 mt-3">
+                <h2>Pain</h2>
+
+                <div class="mt-4 d-flex gap-3">
+                    <button type="button" class="btn btn-primary" data-pane-btn="start">Start</button>
+                    <button type="button" class="btn btn-primary" data-pane-btn="end">End</button>
+                    <button type="button" class="btn btn-primary" data-pane-btn="top">Top</button>
+                    <button type="button" class="btn btn-primary" data-pane-btn="bottom">Bottom</button>
+                </div>
+                <!-- Panestart -->
+                <div class="panestart" data-pane="start" data-pane-backdrop="true">
+                    <div class="panestart-content" data-pane-content="start">
+                        <button data-pane-close="end" class="pane-close"></button>
+                        Тут панель слева
+                    </div>
+                </div>
+                <!-- Paneend -->
+                <div class="paneend" data-pane="end" data-pane-backdrop="true">
+                    <div class="paneend-content" data-pane-content="end">
+                        <button data-pane-close="end" class="paneup-content-close">Закрыть</button>
+                        Тут панель справа
+                    </div>
+                </div>
+                <!-- Panetop -->
+                <div class="paneup" data-pane="top" data-pane-backdrop="true">
+                    <div class="paneup-content" data-pane-content="top">
+                        <button data-pane-close="top">Закрыть</button>
+                        Тут панель сверху
+                    </div>
+                </div>
+                <!-- Panedown -->
+                <div class="panedown" data-pane="bottom" data-pane-backdrop="true">
+                    <div class="panedown-content" data-pane-content="bottom">
+                        <button data-pane-close="bottom">Закрыть</button>
+                        Тут панель сверху
+                    </div>
+                </div>
+            </div>
+            <div class="flex-column gap-3 mt-3">
+                <h2>Spoiler</h2>
+                <div class="spoiler mt-5">
+                    <button class="spoiler-toggle">Toggle</button>
+                    <div class="spoiler-content">
+                        <p>Content inside the spoiler.</p>
+                    </div>
+                </div>
+                <div class="spoiler mt-3">
+                    <button class="spoiler-toggle">Toggle</button>
+                    <div class="spoiler-content">
+                        <p>Content inside the spoiler.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-column gap-3 mt-3">
+                <h2>Tabs</h2>
+
+                <div>
+                    <h4 class="mb-20">Tabs Default</h4>
+                    <div data-tabs="default" class="d-flex gap-2 mt-3">
+                        <button class="btn btn-outline-dark active" data-tabs-btn="1">Таб 1</button>
+                        <button class="btn btn-outline-dark" data-tabs-btn="2">Таб 2</button>
+                        <button class="btn btn-outline-dark" data-tabs-btn="3">Таб 3</button>
+                    </div>
+                    <div class="mt-3" data-tabs-container="default">
+                        <div class="tabs-content show" data-tabs-content="1">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates mollitia, quam quaerat nemo qui aliquam magni ex
+                            nostrum nisi veniam sed. Dolore eveniet debitis optio? Voluptatem cupiditate molestias sequi sit.
+                        </div>
+                        <div class="tabs-content" data-tabs-content="2">Текст второго таба</div>
+                        <div class="tabs-content" data-tabs-content="3">Текст третьего таба</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="mb-3">Tabs Tags</h4>
+                    <div data-tabs="tags" class="d-flex gap-2 mt-3">
+                        <button class="btn btn-outline-dark active" data-tabs-btn="1" data-tabs-name="myone">Таб 1</button>
+                        <button class="btn btn-outline-dark" data-tabs-btn="2" data-tabs-name="mytwo">Таб 2</button>
+                        <button class="btn btn-outline-dark" data-tabs-btn="3" data-tabs-name="mythree">Таб 3</button>
+                    </div>
+                    <div class="mt-3" data-tabs-container="tags">
+                        <div class="tabs-content show" data-tabs-content="1">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates mollitia, quam quaerat nemo qui aliquam magni ex
+                            nostrum nisi veniam sed. Dolore eveniet debitis optio? Voluptatem cupiditate molestias sequi sit.
+                        </div>
+                        <div class="tabs-content" data-tabs-content="2">Текст второго таба</div>
+                        <div class="tabs-content" data-tabs-content="3">Текст третьего таба</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="mb-3">Tabs Cookie</h4>
+                    <div data-tabs="cookie" class="btn-group">
+                        <button class="btn btn-outline-dark active" data-tabs-btn="1" data-tabs-save="true">Таб 1</button>
+                        <button class="btn btn-outline-dark" data-tabs-btn="2" data-tabs-save="true">Таб 2</button>
+                        <button class="btn btn-outline-dark" data-tabs-btn="3" data-tabs-save="true">Таб 3</button>
+                    </div>
+                    <div class="mt-3" data-tabs-container="cookie">
+                        <div class="tabs-content show" data-tabs-content="1">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates mollitia, quam quaerat nemo qui aliquam magni ex
+                            nostrum nisi veniam sed. Dolore eveniet debitis optio? Voluptatem cupiditate molestias sequi sit.
+                        </div>
+                        <div class="tabs-content" data-tabs-content="2">Текст второго таба</div>
+                        <div class="tabs-content" data-tabs-content="3">Текст третьего таба</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container flex-column gap-3 py-5 my-5" id="button">
+            <h2>Кнопки</h2>
+
+            <div class="flex-column gap-5">
+                <div class="flex flex-wrap gap-3">
+                    <button class="btn">Button</button>
+                    <button class="btn btn-primary">Button</button>
+                    <button class="btn btn-primary btn-rounded">Button</button>
+                    <button class="btn btn-outline-primary btn-rounded">Button</button>
+                    <button class="btn btn-dashed-primary btn-rounded">Button</button>
+                    <button class="btn btn-muted-primary">Button</button>
+                    <button class="btn btn-text-primary">Button</button>
+                    <button class="btn btn-link-primary">Button</button>
+                    <button class="btn btn-primary" disabled="">Button</button>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button class="btn btn-shadow">Button</button>
+                    <button class="btn btn-primary btn-shadow">Button</button>
+                    <button class="btn btn-primary btn-rounded btn-shadow">Button</button>
+                    <button class="btn btn-outline-primary btn-rounded btn-shadow">Button</button>
+                    <button class="btn btn-dashed-primary btn-rounded btn-shadow">Button</button>
+                    <button class="btn btn-muted-primary btn-shadow">Button</button>
+                    <button class="btn btn-text-primary btn-shadow">Button</button>
+                    <button class="btn btn-link-primary btn-shadow">Button</button>
+                    <button class="btn btn-primary btn-shadow" disabled="">Button</button>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button class="btn">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                        Button
+                    </button>
+                    <button class="btn btn-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+
+                        Button
+                    </button>
+                    <button class="btn btn-primary btn-rounded">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                        Button
+                    </button>
+                    <button class="btn btn-outline-primary btn-rounded">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                        Button
+                    </button>
+                    <button class="btn btn-dashed-primary btn-rounded">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                        Button
+                    </button>
+                    <button class="btn btn-muted-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                        Button
+                    </button>
+                    <button class="btn btn-text-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                        Button
+                    </button>
+                    <button class="btn btn-link-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                        Button
+                    </button>
+                    <button class="btn btn-primary" disabled="">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                        Button
+                    </button>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button class="btn btn-icon-start">
+                        <span class="btn-icon">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                        Button
+                    </button>
+                    <button class="btn btn-primary btn-icon-start">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                        Button
+                    </button>
+                    <button class="btn btn-primary btn-rounded btn-icon-start">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                        Button
+                    </button>
+                    <button class="btn btn-outline-primary btn-rounded btn-icon-start">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                        Button
+                    </button>
+                    <button class="btn btn-dashed-primary btn-rounded btn-icon-start">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                        Button
+                    </button>
+                    <button class="btn btn-muted-primary btn-icon-start">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+
+                        Button
+                    </button>
+                    <button class="btn btn-text-primary btn-icon-start">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                        Button
+                    </button>
+                    <button class="btn btn-link-primary btn-icon-start">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                        Button
+                    </button>
+                    <button class="btn btn-primary btn-icon-start" disabled="">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                        Button
+                    </button>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button class="btn btn-icon-end">
+                        Button
+                        <span class="btn-icon">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="btn btn-primary btn-icon-end">
+                        Button
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="btn btn-primary btn-rounded btn-icon-end">
+                        Button
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="btn btn-outline-primary btn-rounded btn-icon-end">
+                        Button
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="btn btn-dashed-primary btn-rounded btn-icon-end">
+                        Button
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="btn btn-muted-primary btn-icon-end">
+                        Button
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="btn btn-text-primary btn-icon-end">
+                        Button
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="btn btn-link-primary btn-icon-end">
+                        Button
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="btn btn-primary btn-icon-end" disabled="">
+                        Button
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button class="btn btn-circle btn-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                    </button>
+                    <button class="btn btn-circle btn-outline-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                    </button>
+                    <button class="btn btn-circle btn-dashed-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                    </button>
+                    <button class="btn btn-circle btn-muted-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                    </button>
+                    <button class="btn btn-circle btn-text-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                    </button>
+                    <button class="btn btn-circle btn-link-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                    </button>
+                    <button class="btn btn-circle btn-primary" disabled="">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button class="btn btn-full">Button</button>
+                    <button class="btn btn-primary btn-full">Button</button>
+                    <button class="btn btn-primary btn-rounded btn-full">Button</button>
+                    <button class="btn btn-outline-primary btn-rounded btn-full">Button</button>
+                    <button class="btn btn-dashed-primary btn-rounded btn-full">Button</button>
+                    <button class="btn btn-muted-primary btn-full">Button</button>
+                    <button class="btn btn-text-primary btn-full">Button</button>
+                    <button class="btn btn-link-primary btn-full">Button</button>
+                    <button class="btn btn-primary btn-full" disabled="">Button</button>
+                </div>
+            </div>
+            <h3>Размеры</h3>
+
+            <div class="flex-column gap-3">
+                <div class="flex flex-wrap gap-3 align-items-center mt-30">
+                    <button class="btn btn-sm btn-primary">Button</button>
+                    <button class="btn btn-sm btn-outline-primary btn-rounded">Button</button>
+                    <button class="btn btn-md btn-primary">Button</button>
+                    <button class="btn btn-md btn-outline-primary btn-rounded">Button</button>
+                    <button class="btn btn-lg btn-primary">Button</button>
+                    <button class="btn btn-lg btn-outline-primary btn-rounded">Button</button>
+                </div>
+                <div class="flex flex-wrap gap-3 align-items-center mt-40">
+                    <button class="btn btn-sm btn-primary btn-icon-start">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+
+                        Button
+                    </button>
+                    <button class="btn btn-sm btn-outline-primary btn-rounded btn-icon-start">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                        Button
+                    </button>
+                    <button class="btn btn-md btn-primary btn-icon-start">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                        Button
+                    </button>
+                    <button class="btn btn-md btn-outline-primary btn-rounded btn-icon-start">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                        Button
+                    </button>
+                    <button class="btn btn-lg btn-primary btn-icon-start">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                        Button
+                    </button>
+                    <button class="btn btn-lg btn-outline-primary btn-rounded btn-icon-start">
+                        <span class="btn-icon-box">
+                            <svg width="15" height="15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                    <title>Like-outlined SVG Icon</title>
+                                    <path
+                                        fill="currentColor"
+                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                    />
+                                </svg>
+                            </svg>
+                        </span>
+                        Button
+                    </button>
+                </div>
+                <div class="flex flex-wrap gap-3 align-items-center mt-40">
+                    <button class="btn btn-sm btn-circle btn-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                    </button>
+
+                    <button class="btn btn-sm btn-circle btn-outline-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                    </button>
+
+                    <button class="btn btn-md btn-circle btn-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                    </button>
+
+                    <button class="btn btn-md btn-circle btn-outline-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                    </button>
+                    <button class="btn btn-lg btn-lg btn-circle btn-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                    </button>
+
+                    <button class="btn btn-lg btn-circle btn-outline-primary">
+                        <svg width="15" height="15">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024">
+                                <title>Like-outlined SVG Icon</title>
+                                <path
+                                    fill="currentColor"
+                                    d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7c0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4c47.6-20.3 78.3-66.8 78.3-118.4c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c0-12.6-1.8-25-5.4-37c16.8-22.2 26.1-49.4 26.1-77.7c-.2-12.6-2-25.1-5.6-37.1M184 852V568h81v284zm636.4-353l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19l13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7c9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43"
+                                />
+                            </svg>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <h3>Цвета</h3>
+            <div class="flex-column gap-3 mt-5">
+                <div class="flex flex-wrap gap-3 align-items-center mt-30">
+                    <button class="btn btn-primary">Primary</button>
+                    <button class="btn btn-secondary">Secondary</button>
+                    <button class="btn btn-dark">Dark</button>
+                    <button class="btn btn-white">White</button>
+
+                    <button class="btn btn-success">success</button>
+                    <button class="btn btn-warning">warning</button>
+                    <button class="btn btn-danger">danger</button>
+                </div>
+                <div class="flex flex-wrap gap-3 align-items-center mt-40">
+                    <button class="btn btn-outline-primary">Primary</button>
+                    <button class="btn btn-outline-secondary">Secondary</button>
+                    <button class="btn btn-outline-dark">Dark</button>
+                    <button class="btn btn-outline-white">White</button>
+
+                    <button class="btn btn-outline-success">success</button>
+                    <button class="btn btn-outline-warning">warning</button>
+                    <button class="btn btn-outline-danger">danger</button>
+                </div>
+                <div class="flex flex-wrap gap-3 align-items-center mt-40">
+                    <button class="btn btn-dashed-primary">Primary</button>
+                    <button class="btn btn-dashed-secondary">Secondary</button>
+                    <button class="btn btn-dashed-dark">Dark</button>
+                    <button class="btn btn-dashed-white">White</button>
+
+                    <button class="btn btn-dashed-success">success</button>
+                    <button class="btn btn-dashed-warning">warning</button>
+                    <button class="btn btn-dashed-danger">danger</button>
+                </div>
+                <div class="flex flex-wrap gap-3 align-items-center mt-40">
+                    <button class="btn btn-text-primary">Primary</button>
+                    <button class="btn btn-text-secondary">Secondary</button>
+                    <button class="btn btn-text-dark">Dark</button>
+                    <button class="btn btn-text-white">White</button>
+
+                    <button class="btn btn-text-success">success</button>
+                    <button class="btn btn-text-warning">warning</button>
+                    <button class="btn btn-text-danger">danger</button>
+                </div>
+                <div class="flex flex-wrap gap-3 align-items-center mt-40">
+                    <button class="btn btn-primary" disabled="">Primary</button>
+                    <button class="btn btn-secondary" disabled="">Secondary</button>
+                    <button class="btn btn-dark" disabled="">Dark</button>
+                    <button class="btn btn-white" disabled="">White</button>
+
+                    <button class="btn btn-success" disabled="">success</button>
+                    <button class="btn btn-warning" disabled="">warning</button>
+                    <button class="btn btn-danger" disabled="">danger</button>
+                </div>
+            </div>
+            <h3>Группы</h3>
+            <div class="flex-column gap-3">
+                <div class="btn-group mt-30">
+                    <button class="btn btn-primary">Button</button>
+                    <button class="btn btn-primary">Button</button>
+                    <button class="btn btn-primary">Button</button>
+                    <button class="btn btn-primary">Button</button>
+                </div>
+                <div class="flex flex-wrap gap-10 align-items-center mt-40">
+                    <div class="btn-group">
+                        <button class="btn btn-success">Button</button>
+                        <button class="btn btn-warning">Button</button>
+                        <button class="btn btn-danger">Button</button>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-10 align-items-center mt-40">
+                    <div class="btn-group">
+                        <button class="btn btn-outline-primary">Button</button>
+                        <button class="btn btn-outline-primary">Button</button>
+                        <button class="btn btn-outline-primary">Button</button>
+                        <button class="btn btn-outline-primary">Button</button>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-10 align-items-center mt-40">
+                    <div class="btn-group">
+                        <button class="btn btn-dashed-primary">Button</button>
+                        <button class="btn btn-dashed-primary">Button</button>
+                        <button class="btn btn-dashed-primary">Button</button>
+                        <button class="btn btn-dashed-primary">Button</button>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-10 align-items-center mt-40">
+                    <div class="btn-group">
+                        <button class="btn btn-primary">Button</button>
+                        <button class="btn btn-outline-primary">Button</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container flex-column gap-3 py-5 my-5" id="forms">
+            <h1 class="mb-3">Forms</h1>
+            <h3 id="form-input">Input</h3>
+            <div>
+                <input type="text" class="form-input" placeholder="Тестовая форма" />
+            </div>
+            <div>
+                <input type="text" class="form-input-sm" placeholder="Тестовая форма" />
+            </div>
+            <div>
+                <input type="text" class="form-input-md" placeholder="Тестовая форма" />
+            </div>
+            <div>
+                <input type="text" class="form-input-lg" placeholder="Тестовая форма" />
+            </div>
+            <h4>Состояния</h4>
+            <div class="flex-column gap-3">
+                <input type="text" class="form-input" placeholder="Форма disabled" disabled />
+                <input type="text" class="form-input" placeholder="Форма readonly" value="Форма readonly" readonly />
+            </div>
+            <div class="mt-2">
+                <label for="" class="form-label">Тестовое поле <sup>*</sup></label>
+                <input type="text" class="form-input" placeholder="Тестовая форма" />
+                <div class="form-text">Пояснение к полю</div>
+            </div>
+            <h3 id="form-radio">Radio</h3>
+            <div class="flex-column gap-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault1" />
+                    <label class="form-check-label" for="radioDefault1"> Default radio </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault2" checked />
+                    <label class="form-check-label" for="radioDefault2"> Default checked radio </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radioDisabled" id="radioDisabled" disabled />
+                    <label class="form-check-label" for="radioDisabled"> Disabled radio </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radioDisabled" id="radioCheckedDisabled" checked disabled />
+                    <label class="form-check-label" for="radioCheckedDisabled"> Disabled checked radio </label>
+                </div>
+            </div>
+            <h3 id="form-switcher">Swither</h3>
+            <div class="flex-column gap-2">
+                <div class="form-switch">
+                    <input class="form-switch-input" type="checkbox" role="switch" id="switchCheckDefault" />
+                    <label class="form-switch-label" for="switchCheckDefault">Default switch checkbox input</label>
+                </div>
+                <div class="form-switch">
+                    <input class="form-switch-input" type="checkbox" role="switch" id="switchCheckChecked" checked />
+                    <label class="form-switch-label" for="switchCheckChecked">Checked switch checkbox input</label>
+                </div>
+                <div class="form-switch">
+                    <input class="form-switch-input" type="checkbox" role="switch" id="switchCheckChecked22" checked disabled />
+                    <label class="form-switch-label" for="switchCheckChecked22">Checked switch checkbox input</label>
+                </div>
+            </div>
+            <h3 id="form-checkbox">Checkbox</h3>
+            <div class="flex-column gap-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkDefault" />
+                    <label class="form-check-label" for="checkDefault"> Default checkbox </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkChecked" checked />
+                    <label class="form-check-label" for="checkChecked"> Checked checkbox </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkChecked23" checked disabled />
+                    <label class="form-check-label" for="checkChecked23"> Checked checkbox </label>
+                </div>
+            </div>
+
+            <h3 id="form-select">Form select</h3>
+            <div class="flex-column gap-2">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <select class="form-select-sm" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <select class="form-select-md" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <select class="form-select-lg" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <select class="form-select" aria-label="Disabled select example" disabled>
+                    <option selected>Open this select Disabled</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <h3 id="form-textarea">Textarea</h3>
+            <textarea name="" id="" class="form-textarea" placeholder="Форма автоматическая"></textarea>
+            <div class="mt-2">
+                <label for="" class="form-label">Тестовое поле <sup>*</sup></label>
+                <textarea name="" id="" class="form-textarea" placeholder="Форма"></textarea>
+
+                <textarea name="" id="" class="form-textarea" placeholder="Форма disabled" disabled></textarea>
+
+                <textarea name="" id="" class="form-textarea" placeholder="Форма "></textarea>
+            </div>
+        </div>
+        <script src="/assets/js/nexa.js"></script>
+    </body>
+</html>

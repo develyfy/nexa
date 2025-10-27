@@ -1,183 +1,438 @@
-// --------------------------------------------------------
-// Utils
-// --------------------------------------------------------
+// ==========================================================
+//  UTILS
+// ==========================================================
 
-// Offsets
-$offset-sizes: (
-    auto: auto,
-    0: 0,
-    1: $offset-1,
-    2: $offset-2,
-    3: $offset-3,
-    4: $offset-4,
-    5: $offset-5,
+//  Dependencies:
+@use "../setting" as *;
+@use "mixins" as *;
+@use "sass:map";
+@use "sass:string";
+@use "sass:meta";
+@use "sass:list";
+@use "sass:math";
+
+// Colors pallette
+@each $name, $value in $nexa-colors {
+    .text-#{"" + $name} {
+        color: $value !important;
+    }
+
+    .bg-#{"" + $name} {
+        background-color: $value !important;
+    }
+
+    .border-#{"" + $name} {
+        border-color: $value !important;
+    }
+}
+
+// Spacers
+$nexa-sides: (
+    "": null,
+    "t": top,
+    "b": bottom,
+    "s": left,
+    "e": right,
+    "x": (
+        left,
+        right,
+    ),
+    "y": (
+        top,
+        bottom,
+    ),
 );
 
-@for $i from 10 through 200 {
-    @if $i % 5 == 0 {
-        $offset-sizes: map-merge($offset-sizes, (#{$i}: #{$i}px));
+@function _spacer-suffix($key) {
+    @return if($key == 6, auto, $key);
+}
+
+@mixin spacing-utilities {
+    @each $prefix, $prop in (m: margin, p: padding) {
+        @each $key, $val in $nexa-spacers {
+            $suffix: _spacer-suffix($key);
+
+            @if not($prefix == p and $val == auto) {
+                .#{$prefix}-#{$suffix} {
+                    #{$prop}: #{$val} !important;
+                }
+            }
+
+            @each $abbr, $side in $nexa-sides {
+                @if not($prefix == p and $val == auto) {
+                    .#{$prefix}#{$abbr}-#{$suffix} {
+                        @if $side == null {
+                            #{$prop}: #{$val} !important;
+                        } @else if meta.type-of($side) == "list" {
+                            @each $s in $side {
+                                #{$prop}-#{$s}: #{$val} !important;
+                            }
+                        } @else {
+                            #{$prop}-#{$side}: #{$val} !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @each $key, $val in $nexa-spacers {
+        .gap-#{_spacer-suffix($key)} {
+            gap: #{$val} !important;
+        }
     }
 }
 
-@each $offset-size, $offset-value in $offset-sizes {
-    .m-#{$offset-size} {
-        margin: $offset-value !important;
+@include spacing-utilities;
+
+// Top, right, bottom, left
+@each $key, $val in $nexa-spacers {
+    .top-#{$key} {
+        top: $val !important;
     }
-    .mt-#{$offset-size} {
-        margin-top: $offset-value !important;
+    .right-#{$key} {
+        right: $val !important;
     }
-    .me-#{$offset-size} {
-        margin-right: $offset-value !important;
+    .bottom-#{$key} {
+        bottom: $val !important;
     }
-    .mb-#{$offset-size} {
-        margin-bottom: $offset-value !important;
-    }
-    .ms-#{$offset-size} {
-        margin-left: $offset-value !important;
-    }
-    .mx-#{$offset-size} {
-        margin-inline: $offset-value !important;
-    }
-    .my-#{$offset-size} {
-        margin-block: $offset-value !important;
-    }
-    .p-#{$offset-size} {
-        padding: $offset-value !important;
-    }
-    .pt-#{$offset-size} {
-        padding-top: $offset-value !important;
-    }
-    .pe-#{$offset-size} {
-        padding-right: $offset-value !important;
-    }
-    .pb-#{$offset-size} {
-        padding-bottom: $offset-value !important;
-    }
-    .ps-#{$offset-size} {
-        padding-left: $offset-value !important;
-    }
-    .px-#{$offset-size} {
-        padding-inline: $offset-value !important;
-    }
-    .py-#{$offset-size} {
-        padding-block: $offset-value !important;
-    }
-    .gap-#{$offset-size} {
-        gap: $offset-value !important;
+    .left-#{$key} {
+        left: $val !important;
     }
 }
+
 // Z-index
-$z-index-values: (
-    0: 0,
-    1: $z-index-1,
-    2: $z-index-2,
-    3: $z-index-3,
-    4: $z-index-4,
-    5: $z-index-5,
-    6: $z-index-6,
-);
-
-@each $key, $value in $z-index-values {
+@each $key, $value in $nexa-z-index {
     .z-index-#{$key} {
         z-index: $value;
     }
 }
-// Display
-.flex {
-    display: flex !important;
-    &-wrap {
-        @include flex(
-            (
-                wrap: wrap,
-            )
-        );
-    }
-    &-nowrap {
-        @include flex(
-            (
-                wrap: nowrap,
-            )
-        );
-    }
-    &-column {
-        @include flex(
-            (
-                direction: column,
-            )
-        );
-    }
-    &-space-between {
-        @include flex(
-            (
-                justify: space-between,
-            )
-        );
-    }
-    &-center {
-        @include flex(
-            (
-                justify: center,
-                align: center,
-            )
-        );
-    }
-}
 
-.align-items {
-    &-start {
-        align-items: start !important;
-    }
-    &-center {
-        align-items: center !important;
-    }
-    &-end {
-        align-items: end !important;
-    }
-}
 // Position
-.p {
-    &-absolute {
-        position: absolute !important;
-    }
-    &-relative {
-        position: relative !important;
-    }
-    &-fixed {
-        position: fixed;
-    }
-    &-sticky {
-        position: sticky;
+$positions: (
+    static: static,
+    relative: relative,
+    absolute: absolute,
+    fixed: fixed,
+    sticky: sticky,
+);
+
+@each $name, $value in $positions {
+    .p-#{$name} {
+        position: #{$value} !important;
     }
 }
-@mixin generate-position-classes($range: 100) {
-    @for $i from 0 through $range {
-        .top-#{$i} {
-            top: #{$i}px;
-        }
-        .bottom-#{$i} {
-            bottom: #{$i}px;
-        }
-        .start-#{$i} {
-            left: #{$i}px;
-        }
-        .end-#{$i} {
-            right: #{$i}px;
+
+// Display
+$displays: (
+    block: block,
+    inline: inline,
+    inline-block: inline-block,
+    flex: flex,
+    inline-flex: inline-flex,
+    grid: grid,
+    inline-grid: inline-grid,
+    none: none,
+);
+
+@each $name, $value in $displays {
+    .d-#{$name} {
+        display: #{$value} !important;
+    }
+}
+
+// Flex
+$flex-directions: (
+    row: row,
+    row-reverse: row-reverse,
+    column: column,
+    column-reverse: column-reverse,
+);
+
+@each $name, $value in $flex-directions {
+    .flex-#{$name} {
+        display: flex !important;
+        flex-direction: #{$value} !important;
+    }
+}
+$justify-options: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    between: space-between,
+    around: space-around,
+    evenly: space-evenly,
+);
+
+@each $name, $value in $justify-options {
+    .justify-content-#{$name} {
+        display: flex !important;
+        justify-content: #{$value} !important;
+    }
+}
+
+$align-items: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    baseline: baseline,
+    stretch: stretch,
+);
+
+@each $name, $value in $align-items {
+    .align-items-#{$name} {
+        display: flex !important;
+        align-items: #{$value} !important;
+    }
+}
+$align-self: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    baseline: baseline,
+    stretch: stretch,
+);
+
+@each $name, $value in $align-self {
+    .align-self-#{$name} {
+        align-self: #{$value} !important;
+    }
+}
+.flex-fill {
+    flex: 1 1 auto !important;
+}
+$flex-grow: (
+    0: 0,
+    1: 1,
+);
+
+$flex-shrink: (
+    0: 0,
+    1: 1,
+);
+
+// Flex grow
+@each $key, $value in $flex-grow {
+    .flex-grow-#{$key} {
+        flex-grow: #{$value} !important;
+    }
+}
+
+// Flex shrink
+@each $key, $value in $flex-shrink {
+    .flex-shrink-#{$key} {
+        flex-shrink: #{$value} !important;
+    }
+}
+
+// Flex wraps
+$flex-wraps: (
+    nowrap: nowrap,
+    wrap: wrap,
+    wrap-reverse: wrap-reverse,
+);
+
+@each $name, $value in $flex-wraps {
+    .flex-#{$name} {
+        display: flex !important;
+        flex-wrap: #{$value} !important;
+    }
+}
+
+// Flex orders
+$flex-orders: 0, 1, 2, 3, 4, 5;
+
+@each $num in $flex-orders {
+    .order-#{$num} {
+        order: #{$num} !important;
+    }
+}
+
+// Order
+.order-first {
+    order: -1 !important;
+}
+
+.order-last {
+    order: 9999 !important;
+}
+
+// Width
+$sizes-percent: (10, 20, 30, 40, 50, 60, 70, 80, 90, 100);
+
+@each $val in $sizes-percent {
+    .w-#{$val} {
+        width: #{$val + "%"} !important;
+    }
+
+    .h-#{$val} {
+        height: #{$val + "%"} !important;
+    }
+}
+$user-selects: (
+    all: all,
+    auto: auto,
+    none: none,
+);
+
+// User select
+@each $name, $value in $user-selects {
+    .user-select-#{$name} {
+        user-select: #{$value} !important;
+        -webkit-user-select: #{$value} !important;
+        -moz-user-select: #{$value} !important;
+    }
+}
+
+// Opacity
+$opacity-values: (0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100);
+
+@each $val in $opacity-values {
+    .opacity-#{$val} {
+        opacity: #{math.div($val, 100)} !important;
+    }
+}
+
+// Overflow
+$overflow-values: (
+    auto: auto,
+    hidden: hidden,
+    visible: visible,
+    scroll: scroll,
+);
+
+@each $name, $value in $overflow-values {
+    .overflow-#{$name} {
+        overflow: #{$value} !important;
+    }
+}
+
+@each $name, $value in $overflow-values {
+    .overflow-x-#{$name} {
+        overflow-x: #{$value} !important;
+    }
+}
+
+@each $name, $value in $overflow-values {
+    .overflow-y-#{$name} {
+        overflow-y: #{$value} !important;
+    }
+}
+
+// Text align
+$text-align: (start, center, end);
+@each $name in $text-align {
+    .text-#{$name} {
+        text-align: #{$name} !important;
+    }
+}
+
+// Text wrap
+.text-wrap {
+    white-space: normal !important;
+}
+.text-nowrap {
+    white-space: nowrap !important;
+}
+.text-break {
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+}
+
+// Text transform
+$text-transform: (
+    lowercase: lowercase,
+    uppercase: uppercase,
+    capitalize: capitalize,
+);
+@each $name, $val in $text-transform {
+    .text-#{$name} {
+        text-transform: #{$val} !important;
+    }
+}
+
+// Font weight
+$font-weights: (
+    bold: 700,
+    bolder: bolder,
+    semibold: 600,
+    medium: 500,
+    normal: 400,
+    light: 300,
+    lighter: lighter,
+);
+@each $name, $val in $font-weights {
+    .fw-#{$name} {
+        font-weight: #{$val} !important;
+    }
+}
+
+// Text decoration
+$text-decorations: (
+    underline: underline,
+    line-through: line-through,
+    none: none,
+);
+@each $name, $val in $text-decorations {
+    .text-decoration-#{$name} {
+        text-decoration: #{$val} !important;
+    }
+}
+
+// Visibility
+.visible {
+    visibility: visible !important;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
+// Container
+.container {
+    @include container(map.get($nexa-setting, container-width), map.get($nexa-setting, container-offset));
+}
+.container-fluid {
+    @include container(100%, map.get($nexa-setting, container-offset));
+}
+
+// Grid
+$__max-cols: map.get($nexa-setting, grid-columns);
+
+// Grid-col
+@for $i from 1 through $__max-cols {
+    .grid-#{$i} {
+        display: grid;
+        grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+    }
+}
+
+// Grid col adaptive
+@each $bp, $width in $nexa-breakpoints {
+    @media (min-width: $width) {
+        @for $i from 1 through $__max-cols {
+            .grid-#{$bp}-#{$i} {
+                display: grid;
+                grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+            }
         }
     }
 }
 
-@include generate-position-classes(100);
+// Col
+@for $i from 1 through $__max-cols {
+    .col-#{$i} {
+        grid-column: span #{$i} / span #{$i};
+    }
+}
 
-// Backdrop
-.backdrop {
-    &::before {
-        content: "";
-        position: fixed;
-        inset: 0 0 0 0;
-        height: 100vh;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        transition: 0.3s;
-        z-index: $z-index-3;
+// Col adaptive
+@each $bp, $width in $nexa-breakpoints {
+    @media (min-width: $width) {
+        @for $i from 1 through $__max-cols {
+            .col-#{$bp}-#{$i} {
+                grid-column: span #{$i} / span #{$i};
+            }
+        }
     }
 }
