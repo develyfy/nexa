@@ -1,6 +1,6 @@
 # Nexa
 
-**Nexa ** is a modern modular front-end and SCSS framework designed for building fast, adaptive, and maintainable web interfaces.
+**Nexa** is a modern modular front-end and SCSS framework designed for building fast, adaptive, and maintainable web interfaces.
 
 ## Key Features
 
