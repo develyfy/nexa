@@ -1,10 +1,6 @@
-![Components](https://img.shields.io/badge/Components-6-blue)
-![Mixins](https://img.shields.io/badge/Mixins-8-green)
-![Utils](https://img.shields.io/badge/Utils-100-orange)
+# Nexa
 
-# Nexa Framework
-
-**Nexa Framework** is a modern modular front-end and SCSS framework designed for building fast, adaptive, and maintainable web interfaces.
+**Nexa ** is a modern modular front-end and SCSS framework designed for building fast, adaptive, and maintainable web interfaces.
 
 ## Key Features
 
